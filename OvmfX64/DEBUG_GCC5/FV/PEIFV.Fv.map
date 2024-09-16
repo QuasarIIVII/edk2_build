@@ -1,0 +1,49 @@
+EFI_FV_TOTAL_SIZE = 0xe0000
+EFI_FV_TAKEN_SIZE = 0x4d168
+EFI_FV_SPACE_SIZE = 0x92e98
+
+PeiCore (Fixed Flash Address, BaseAddress=0x0000820140, EntryPoint=0x0000828279, Type=PE)
+(GUID=52C05B14-0B98-496C-BC3B-04B50211D680 .textbaseaddress=0x0000820380 .databaseaddress=0x000082b080)
+
+
+
+PcdPeim (Fixed Flash Address, BaseAddress=0x000082b8c0, EntryPoint=0x000082eb3b, Type=PE)
+(GUID=9B3ADA4F-AE56-4C24-8DEA-F03B7558AE50 .textbaseaddress=0x000082bb00 .databaseaddress=0x00008300c0)
+
+
+
+ReportStatusCodeRouterPei (Fixed Flash Address, BaseAddress=0x00008305c0, EntryPoint=0x0000831944, Type=PE)
+(GUID=A3610442-E69F-4DF3-82CA-2360C4031A23 .textbaseaddress=0x0000830800 .databaseaddress=0x0000832340)
+
+
+
+StatusCodeHandlerPei (Fixed Flash Address, BaseAddress=0x00008325c0, EntryPoint=0x00008337b6, Type=PE)
+(GUID=9D225237-FA01-464C-A949-BAABC02D31D0 .textbaseaddress=0x0000832800 .databaseaddress=0x0000834280)
+
+
+
+PlatformPei (Fixed Flash Address, BaseAddress=0x0000834440, EntryPoint=0x000083c989, Type=PE)
+(GUID=222C386D-5ABC-4FB4-B124-FBB82488ACF4 .textbaseaddress=0x0000834680 .databaseaddress=0x0000847fc0)
+
+
+
+DxeIpl (Fixed Flash Address, BaseAddress=0x00008497c0, EntryPoint=0x000084caab, Type=PE)
+(GUID=86D70125-BAA3-4296-A62F-602BEBBB9081 .textbaseaddress=0x0000849a00 .databaseaddress=0x000084dc40)
+
+
+
+S3Resume2Pei (Fixed Flash Address, BaseAddress=0x000084dfc0, EntryPoint=0x0000850dee, Type=PE)
+(GUID=89E549B0-7CFE-449D-9BA3-10D8B2312D71 .textbaseaddress=0x000084e200 .databaseaddress=0x0000852740)
+
+
+
+CpuMpPei (Fixed Flash Address, BaseAddress=0x0000852b40, EntryPoint=0x000085826d, Type=PE)
+(GUID=EDADEB9D-DDBA-48BD-9D22-C1C169C8C5C6 .textbaseaddress=0x0000852d80 .databaseaddress=0x0000862f40)
+
+
+
+CpuMpPei (Fixed Flash Address, BaseAddress=0x0000863540, EntryPoint=0x000086903d, Type=PE)
+(GUID=280251C4-1D09-4035-9062-839ACB5F18C1 .textbaseaddress=0x0000863780 .databaseaddress=0x000086cd00)
+
+
+

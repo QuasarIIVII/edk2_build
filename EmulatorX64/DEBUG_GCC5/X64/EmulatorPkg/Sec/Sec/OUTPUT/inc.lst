@@ -1,0 +1,11 @@
+-I/home/enyephy/edk2/edk2/EmulatorPkg/Sec/X64
+-I/home/enyephy/edk2/edk2/EmulatorPkg/Sec
+-I/home/enyephy/edk2/edk2/Build/EmulatorX64/DEBUG_GCC5/X64/EmulatorPkg/Sec/Sec/DEBUG
+-I/home/enyephy/edk2/edk2/MdePkg
+-I/home/enyephy/edk2/edk2/MdePkg/Include
+-I/home/enyephy/edk2/edk2/MdePkg/Test/UnitTest/Include
+-I/home/enyephy/edk2/edk2/MdePkg/Test/Mock/Include
+-I/home/enyephy/edk2/edk2/MdePkg/Library/MipiSysTLib/mipisyst/library/include
+-I/home/enyephy/edk2/edk2/MdePkg/Include/X64
+-I/home/enyephy/edk2/edk2/EmulatorPkg
+-I/home/enyephy/edk2/edk2/EmulatorPkg/Include
