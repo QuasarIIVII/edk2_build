@@ -3,7 +3,6 @@
 /home/enyephy/edk2/edk2/MdePkg/Library/BasePciExpressLib/BasePciExpressLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/BasePeCoffLib/BasePeCoffLib.inf
 /home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe/DEBUG/AutoGen.h
-/home/enyephy/edk2/edk2/CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/DxeHobLib/DxeHobLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/TdxLib/TdxLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
@@ -17,8 +16,10 @@
 /home/enyephy/edk2/edk2/MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
 /home/enyephy/edk2/edk2/OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib.inf
+/home/enyephy/edk2/edk2/SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
+/home/enyephy/edk2/edk2/CryptoPkg/Library/OpensslLib/OpensslLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
 /home/enyephy/edk2/edk2/MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/BasePciCf8Lib/BasePciCf8Lib.inf
@@ -37,3 +38,4 @@
 /home/enyephy/edk2/edk2/MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
 /home/enyephy/edk2/edk2/MdePkg/Library/BaseLib/BaseLib.inf
 /home/enyephy/edk2/edk2/MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf
+/home/enyephy/edk2/edk2/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.inf

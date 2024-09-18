@@ -191,7 +191,7 @@ OBJECT_FILES =  \
 STATIC_LIBRARY_FILES =  \
     $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/BaseCryptLib/OUTPUT/BaseCryptLib.lib \
     $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/OUTPUT/BaseIntrinsicLib.lib \
-    $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/OpensslLibCrypto.lib \
+    $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/OUTPUT/OpensslLib.lib \
     $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/OUTPUT/BaseRngLibTimerLib.lib \
     $(BIN_DIR)/MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib/OUTPUT/DxeReportStatusCodeLib.lib \
     $(BIN_DIR)/MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib/OUTPUT/BaseDebugPrintErrorLevelLib.lib \
@@ -339,7 +339,7 @@ gen_libs:
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/GNUmakefile
-	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BasePeCoffExtraActionLibNull/BasePeCoffExtraActionLibNull/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/BaseCryptLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint/GNUmakefile
@@ -462,7 +462,7 @@ cleanlib:
 	-@test -e $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/GNUmakefile cleanall
-	-@test -e $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/BasePeCoffExtraActionLibNull/BasePeCoffExtraActionLibNull/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BasePeCoffExtraActionLibNull/BasePeCoffExtraActionLibNull/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/BaseCryptLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/BaseCryptLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint/GNUmakefile cleanall

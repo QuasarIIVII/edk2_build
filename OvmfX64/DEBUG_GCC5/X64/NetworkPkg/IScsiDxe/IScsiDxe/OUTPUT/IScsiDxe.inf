@@ -31,6 +31,7 @@
 [Binaries.X64]
   PE32|IScsiDxe.efi
   DXE_DEPEX|IScsiDxe.depex
+  BIN|IScsiDxeOffset.bin
 
 [PatchPcd.X64]
 
@@ -319,7 +320,7 @@
 #  MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib.inf
 #  MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
 #  CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
-#  CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf
+#  CryptoPkg/Library/OpensslLib/OpensslLib.inf
 #  MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
 #  CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
 #  MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf

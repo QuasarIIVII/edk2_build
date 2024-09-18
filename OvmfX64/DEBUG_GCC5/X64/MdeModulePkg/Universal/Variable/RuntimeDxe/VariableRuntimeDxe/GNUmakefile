@@ -200,7 +200,10 @@ OBJECT_FILES =  \
     $(OUTPUT_DIR)/VariableRuntimeCache.obj
 
 STATIC_LIBRARY_FILES =  \
-    $(BIN_DIR)/MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull/OUTPUT/AuthVariableLibNull.lib \
+    $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/RuntimeCryptLib/OUTPUT/RuntimeCryptLib.lib \
+    $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/OUTPUT/BaseIntrinsicLib.lib \
+    $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/OUTPUT/OpensslLib.lib \
+    $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/OUTPUT/BaseRngLibTimerLib.lib \
     $(BIN_DIR)/MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib/OUTPUT/BaseVariableFlashInfoLib.lib \
     $(BIN_DIR)/MdeModulePkg/Library/VarCheckLib/VarCheckLib/OUTPUT/VarCheckLib.lib \
     $(BIN_DIR)/MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib/OUTPUT/VarCheckUefiLib.lib \
@@ -232,6 +235,8 @@ STATIC_LIBRARY_FILES =  \
     $(BIN_DIR)/OvmfPkg/Library/CcProbeLib/DxeCcProbeLib/OUTPUT/DxeCcProbeLib.lib \
     $(BIN_DIR)/OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35/OUTPUT/DxePciLibI440FxQ35.lib \
     $(BIN_DIR)/OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort/OUTPUT/PlatformDebugLibIoPort.lib \
+    $(BIN_DIR)/OvmfPkg/Library/PlatformSecureLib/PlatformSecureLib/OUTPUT/PlatformSecureLib.lib \
+    $(BIN_DIR)/SecurityPkg/Library/AuthVariableLib/AuthVariableLib/OUTPUT/AuthVariableLib.lib \
     $(BIN_DIR)/SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib/OUTPUT/DxeTpmMeasurementLib.lib \
     $(OUTPUT_DIR)/VariableRuntimeDxe.lib
 
@@ -328,8 +333,8 @@ gen_libs:
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseLib/BaseLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/TdxLib/TdxLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib/GNUmakefile
-	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BasePrintLib/BasePrintLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BasePrintLib/BasePrintLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/CcProbeLib/DxeCcProbeLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib/GNUmakefile
@@ -342,16 +347,21 @@ gen_libs:
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/DxeHobLib/DxeHobLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/PlatformSecureLib/PlatformSecureLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/RuntimeCryptLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VarCheckLib/VarCheckLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiRuntimeLib/UefiRuntimeLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib/GNUmakefile
-	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/SecurityPkg/Library/AuthVariableLib/AuthVariableLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib/GNUmakefile
-	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/StackCheckLibNull/StackCheckLibNull/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib/GNUmakefile
@@ -500,8 +510,8 @@ cleanlib:
 	-@test -e $(BIN_DIR)/MdePkg/Library/BaseLib/BaseLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseLib/BaseLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/TdxLib/TdxLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/TdxLib/TdxLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib/GNUmakefile cleanall
-	-@test -e $(BIN_DIR)/MdePkg/Library/BasePrintLib/BasePrintLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BasePrintLib/BasePrintLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/MdePkg/Library/BasePrintLib/BasePrintLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BasePrintLib/BasePrintLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/OvmfPkg/Library/CcProbeLib/DxeCcProbeLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/CcProbeLib/DxeCcProbeLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib/GNUmakefile cleanall
@@ -514,16 +524,21 @@ cleanlib:
 	-@test -e $(BIN_DIR)/OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/DxeHobLib/DxeHobLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/DxeHobLib/DxeHobLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/IntrinsicLib/IntrinsicLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/OpensslLib/OpensslLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/OvmfPkg/Library/PlatformSecureLib/PlatformSecureLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/OvmfPkg/Library/PlatformSecureLib/PlatformSecureLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/RuntimeCryptLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/CryptoPkg/Library/BaseCryptLib/RuntimeCryptLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdeModulePkg/Library/VarCheckLib/VarCheckLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VarCheckLib/VarCheckLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/UefiRuntimeLib/UefiRuntimeLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiRuntimeLib/UefiRuntimeLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib/GNUmakefile cleanall
-	-@test -e $(BIN_DIR)/MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/SecurityPkg/Library/AuthVariableLib/AuthVariableLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/SecurityPkg/Library/AuthVariableLib/AuthVariableLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib/GNUmakefile cleanall
-	-@test -e $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdePkg/Library/StackCheckLibNull/StackCheckLibNull/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdePkg/Library/StackCheckLibNull/StackCheckLibNull/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib/GNUmakefile cleanall

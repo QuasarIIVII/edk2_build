@@ -27,6 +27,7 @@
 
 [Binaries.X64]
   PE32|Shell.efi
+  BIN|ShellOffset.bin
 
 [PatchPcd.X64]
 
@@ -408,13 +409,16 @@
 
   ## UNDEFINED
   ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
   gEfiIp6ServiceBindingProtocolGuid
 
   ## UNDEFINED
   ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
   gEfiIp6ProtocolGuid
 
   ## UNDEFINED
+  ## SOMETIMES_CONSUMES
   ## SOMETIMES_CONSUMES
   gEfiIp6ConfigProtocolGuid
 
@@ -530,6 +534,7 @@
 
   ## UNDEFINED
   ## CONSUMES
+  ## CONSUMES
   gEfiCpuArchProtocolGuid
 
   ## UNDEFINED
@@ -551,6 +556,7 @@
   gEfiSecurityArchProtocolGuid
 
   ## UNDEFINED
+  ## CONSUMES
   ## CONSUMES
   gEfiTimerArchProtocolGuid
 
@@ -1171,6 +1177,9 @@
   ## SOMETIMES_CONSUMES ## HII
   gShellNetwork1HiiGuid
 
+  ## SOMETIMES_CONSUMES ## HII
+  gShellNetwork2HiiGuid
+
 
 [PcdEx.X64]
 
@@ -1218,6 +1227,7 @@
 #  ShellPkg/Library/UefiShellDebug1CommandsLib/UefiShellDebug1CommandsLib.inf
 #  ShellPkg/Library/UefiShellInstall1CommandsLib/UefiShellInstall1CommandsLib.inf
 #  ShellPkg/Library/UefiShellNetwork1CommandsLib/UefiShellNetwork1CommandsLib.inf
+#  ShellPkg/Library/UefiShellNetwork2CommandsLib/UefiShellNetwork2CommandsLib.inf
 
 [Depex.X64]
 #  (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiUnicodeCollation2ProtocolGuid) AND (gEfiRngProtocolGuid)

@@ -393,7 +393,7 @@ extern const  UINT32  _gPcd_FixedAtBuild_PcdXenPvhStartOfDayStructPtrSize;
 #define _PCD_TOKEN_PcdSecureBootSupported  0U
 #define _PCD_SIZE_PcdSecureBootSupported 1
 #define _PCD_GET_MODE_SIZE_PcdSecureBootSupported  _PCD_SIZE_PcdSecureBootSupported 
-#define _PCD_VALUE_PcdSecureBootSupported  ((BOOLEAN)0U)
+#define _PCD_VALUE_PcdSecureBootSupported  ((BOOLEAN)1U)
 extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdSecureBootSupported;
 #define _PCD_GET_MODE_BOOL_PcdSecureBootSupported  _gPcd_FixedAtBuild_PcdSecureBootSupported
 //#define _PCD_SET_MODE_BOOL_PcdSecureBootSupported  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD

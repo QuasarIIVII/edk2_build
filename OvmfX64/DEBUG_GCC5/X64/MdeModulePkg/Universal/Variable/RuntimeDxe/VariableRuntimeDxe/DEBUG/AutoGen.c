@@ -40,8 +40,16 @@ GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiAcpi20TableGuid = { 0x8868E871, 0xE4F
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiAcpi10TableGuid = { 0xEB9D2D30, 0x2D88, 0x11D3, { 0x9A, 0x16, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiHobListGuid = { 0x7739F24C, 0x93D7, 0x11D4, { 0x9A, 0x3A, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gUefiOvmfPkgPlatformInfoGuid = {0xdec9b486, 0x1f16, 0x47c7, {0x8f, 0x68, 0xdf, 0x1a, 0x41, 0x88, 0x8b, 0xa5}};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEdkiiRngAlgorithmUnSafe = { 0x869f728c, 0x409d, 0x4ab4, {0xac, 0x03, 0x71, 0xd3, 0x09, 0xc1, 0xb3, 0xf4 }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiHardwareErrorVariableGuid = { 0x414E6BDD, 0xE47B, 0x47cc, { 0xB2, 0x44, 0xBB, 0x61, 0x02, 0x0C, 0xF5, 0x16 }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiDxeServicesTableGuid = { 0x05AD34BA, 0x6F02, 0x4214, { 0x95, 0x2E, 0x4D, 0xA0, 0x39, 0x8E, 0x2B, 0xB9 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiSecureBootEnableDisableGuid = { 0xf0a30bc7, 0xaf08, 0x4556, { 0x99, 0xc4, 0x0, 0x10, 0x9, 0xc9, 0x3a, 0x44 } };
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCustomModeEnableGuid = { 0xc076ec0c, 0x7028, 0x4399, { 0xa0, 0x72, 0x71, 0xee, 0x5c, 0x44, 0x8b, 0x9f } };
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertDbGuid = { 0xd9bee56e, 0x75dc, 0x49d9, { 0xb4, 0xd7, 0xb5, 0x34, 0x21, 0xf, 0x63, 0x7a } };
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiVendorKeysNvGuid = { 0x9073e4e0, 0x60ec, 0x4b6e, { 0x99, 0x3, 0x4c, 0x22, 0x3c, 0x26, 0xf, 0x3c } };
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertTypeRsa2048Sha256Guid = { 0xa7717414, 0xc616, 0x4977, {0x94, 0x20, 0x84, 0x47, 0x12, 0xa7, 0x35, 0xbf }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertPkcs7Guid = { 0x4aafd29d, 0x68df, 0x49ee, {0x8a, 0xa9, 0x34, 0x7d, 0x37, 0x56, 0x65, 0xa7 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertX509Guid = { 0xa5c059a1, 0x94e4, 0x4aa7, {0x87, 0xb5, 0xab, 0x15, 0x5c, 0x2b, 0xf0, 0x72 }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gVariableFlashInfoHobGuid = { 0x5d11c653, 0x8154, 0x4ac3, { 0xa8, 0xc2, 0xfb, 0xa2, 0x89, 0x20, 0xfc, 0x90 }};
 
 // Protocols
@@ -293,6 +301,15 @@ extern const  UINT32  _gPcd_FixedAtBuild_PcdUefiLibMaxPrintBufferSize;
 #define _PCD_SET_MODE_16_PcdOvmfHostBridgePciDevId(Value)  LibPcdSet16(_PCD_TOKEN_PcdOvmfHostBridgePciDevId, (Value))
 #define _PCD_SET_MODE_16_S_PcdOvmfHostBridgePciDevId(Value)  LibPcdSet16S(_PCD_TOKEN_PcdOvmfHostBridgePciDevId, (Value))
 
+#define _PCD_TOKEN_PcdAllowVariablePolicyEnforcementDisable  0U
+#define _PCD_SIZE_PcdAllowVariablePolicyEnforcementDisable 1
+#define _PCD_GET_MODE_SIZE_PcdAllowVariablePolicyEnforcementDisable  _PCD_SIZE_PcdAllowVariablePolicyEnforcementDisable 
+#define _PCD_VALUE_PcdAllowVariablePolicyEnforcementDisable  0U
+GLOBAL_REMOVE_IF_UNREFERENCED const BOOLEAN _gPcd_FixedAtBuild_PcdAllowVariablePolicyEnforcementDisable = _PCD_VALUE_PcdAllowVariablePolicyEnforcementDisable;
+extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdAllowVariablePolicyEnforcementDisable;
+#define _PCD_GET_MODE_BOOL_PcdAllowVariablePolicyEnforcementDisable  _gPcd_FixedAtBuild_PcdAllowVariablePolicyEnforcementDisable
+//#define _PCD_SET_MODE_BOOL_PcdAllowVariablePolicyEnforcementDisable  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
+
 #define _PCD_TOKEN_PcdSpinLockTimeout  0U
 #define _PCD_SIZE_PcdSpinLockTimeout 4
 #define _PCD_GET_MODE_SIZE_PcdSpinLockTimeout  _PCD_SIZE_PcdSpinLockTimeout 
@@ -301,6 +318,15 @@ GLOBAL_REMOVE_IF_UNREFERENCED const UINT32 _gPcd_FixedAtBuild_PcdSpinLockTimeout
 extern const  UINT32  _gPcd_FixedAtBuild_PcdSpinLockTimeout;
 #define _PCD_GET_MODE_32_PcdSpinLockTimeout  _gPcd_FixedAtBuild_PcdSpinLockTimeout
 //#define _PCD_SET_MODE_32_PcdSpinLockTimeout  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
+
+#define _PCD_TOKEN_PcdRequireSelfSignedPk  0U
+#define _PCD_SIZE_PcdRequireSelfSignedPk 1
+#define _PCD_GET_MODE_SIZE_PcdRequireSelfSignedPk  _PCD_SIZE_PcdRequireSelfSignedPk 
+#define _PCD_VALUE_PcdRequireSelfSignedPk  ((BOOLEAN)1U)
+GLOBAL_REMOVE_IF_UNREFERENCED const BOOLEAN _gPcd_FixedAtBuild_PcdRequireSelfSignedPk = _PCD_VALUE_PcdRequireSelfSignedPk;
+extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdRequireSelfSignedPk;
+#define _PCD_GET_MODE_BOOL_PcdRequireSelfSignedPk  _gPcd_FixedAtBuild_PcdRequireSelfSignedPk
+//#define _PCD_SET_MODE_BOOL_PcdRequireSelfSignedPk  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
 
 #define _PCD_TOKEN_PcdFlashNvStorageVariableBase  0U
 #define _PCD_SIZE_PcdFlashNvStorageVariableBase 4
@@ -368,15 +394,6 @@ extern const  UINT32  _gPcd_FixedAtBuild_PcdFlashNvStorageFtwWorkingSize;
 #define _PCD_GET_MODE_32_PcdFlashNvStorageFtwWorkingSize  _gPcd_FixedAtBuild_PcdFlashNvStorageFtwWorkingSize
 //#define _PCD_SET_MODE_32_PcdFlashNvStorageFtwWorkingSize  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
 
-#define _PCD_TOKEN_PcdAllowVariablePolicyEnforcementDisable  0U
-#define _PCD_SIZE_PcdAllowVariablePolicyEnforcementDisable 1
-#define _PCD_GET_MODE_SIZE_PcdAllowVariablePolicyEnforcementDisable  _PCD_SIZE_PcdAllowVariablePolicyEnforcementDisable 
-#define _PCD_VALUE_PcdAllowVariablePolicyEnforcementDisable  0U
-GLOBAL_REMOVE_IF_UNREFERENCED const BOOLEAN _gPcd_FixedAtBuild_PcdAllowVariablePolicyEnforcementDisable = _PCD_VALUE_PcdAllowVariablePolicyEnforcementDisable;
-extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdAllowVariablePolicyEnforcementDisable;
-#define _PCD_GET_MODE_BOOL_PcdAllowVariablePolicyEnforcementDisable  _gPcd_FixedAtBuild_PcdAllowVariablePolicyEnforcementDisable
-//#define _PCD_SET_MODE_BOOL_PcdAllowVariablePolicyEnforcementDisable  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
-
 
 RETURN_STATUS
 EFIAPI
@@ -437,6 +454,19 @@ AcpiTimerLibConstructor (
   VOID
   );
 
+RETURN_STATUS
+EFIAPI
+OpensslLibConstructor (
+  VOID
+  );
+
+EFI_STATUS
+EFIAPI
+RuntimeCryptLibConstructor (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  );
+
 EFI_STATUS
 EFIAPI
 RuntimeDriverLibConstruct (
@@ -493,6 +523,12 @@ ProcessLibraryConstructorList (
 
   Status = AcpiTimerLibConstructor ();
   ASSERT_RETURN_ERROR (Status);
+
+  Status = OpensslLibConstructor ();
+  ASSERT_RETURN_ERROR (Status);
+
+  Status = RuntimeCryptLibConstructor (ImageHandle, SystemTable);
+  ASSERT_EFI_ERROR (Status);
 
   Status = RuntimeDriverLibConstruct (ImageHandle, SystemTable);
   ASSERT_EFI_ERROR (Status);

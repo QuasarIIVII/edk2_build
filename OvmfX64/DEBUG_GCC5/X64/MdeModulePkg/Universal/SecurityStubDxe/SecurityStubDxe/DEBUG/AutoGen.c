@@ -33,6 +33,17 @@ GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEdkiiRngAlgorithmUnSafe = { 0x869f728c, 
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiFileInfoGuid = { 0x09576E92, 0x6D3F, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiStatusCodeSpecificDataGuid = { 0x335984BD, 0xE805, 0x409A, { 0xB8, 0xF8, 0xD2, 0x7E, 0xCE, 0x5F, 0xF7, 0xA6 }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiStatusCodeDataTypeDebugGuid = { 0x9A4E9246, 0xD553, 0x11D5, { 0x87, 0xE2, 0x00, 0x06, 0x29, 0x45, 0xC3, 0xB9 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiImageSecurityDatabaseGuid = { 0xd719b2cb, 0x3d3a, 0x4596, {0xa3, 0xbc, 0xda, 0xd0,  0xe, 0x67, 0x65, 0x6f }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertSha1Guid = { 0x826ca512, 0xcf10, 0x4ac9, {0xb1, 0x87, 0xbe,  0x1, 0x49, 0x66, 0x31, 0xbd }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertSha256Guid = { 0xc1c41626, 0x504c, 0x4092, {0xac, 0xa9, 0x41, 0xf9, 0x36, 0x93, 0x43, 0x28 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertSha384Guid = { 0xff3e5307, 0x9fd0, 0x48c9, {0x85, 0xf1, 0x8a, 0xd5, 0x6c, 0x70, 0x1e,  0x1 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertSha512Guid = { 0x93e0fae,  0xa6c4, 0x4f50, {0x9f, 0x1b, 0xd4, 0x1e, 0x2b, 0x89, 0xc1, 0x9a }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertX509Guid = { 0xa5c059a1, 0x94e4, 0x4aa7, {0x87, 0xb5, 0xab, 0x15, 0x5c, 0x2b, 0xf0, 0x72 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertX509Sha256Guid = { 0x3bd2a492, 0x96c0, 0x4079, {0xb4, 0x20, 0xfc, 0xf9, 0x8e, 0xf1, 0x03, 0xed }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertX509Sha384Guid = { 0x7076876e, 0x80c2, 0x4ee6, {0xaa, 0xd2, 0x28, 0xb3, 0x49, 0xa6, 0x86, 0x5b }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertX509Sha512Guid = { 0x446dbf63, 0x2502, 0x4cda, {0xbc, 0xfa, 0x24, 0x65, 0xd2, 0xb0, 0xfe, 0x9d }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCertPkcs7Guid = { 0x4aafd29d, 0x68df, 0x49ee, {0x8a, 0xa9, 0x34, 0x7d, 0x37, 0x56, 0x65, 0xa7 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiSecurityPkgTokenSpaceGuid = { 0xd3fb176, 0x9569, 0x4d51, { 0xa3, 0xef, 0x7d, 0x61, 0xc6, 0x4f, 0xea, 0xba }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gMeasuredFvHobGuid = { 0xb2360b42, 0x7173, 0x420a, { 0x86, 0x96, 0x46, 0xca, 0x6b, 0xab, 0x10, 0x60 }};
 
 // Protocols
@@ -64,12 +75,13 @@ GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiFirmwareVolume2ProtocolGuid = { 0x220
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiLoadedImageProtocolGuid = { 0x5B1B31A1, 0x9562, 0x11D2, { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiLoadFileProtocolGuid = { 0x56EC3091, 0x954C, 0x11D2, { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiLoadFile2ProtocolGuid = { 0x4006c0c1, 0xfcb3, 0x403e, {0x99, 0x6d, 0x4a, 0x6c, 0x87, 0x24, 0xe0, 0x6d }};
-GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiMpServiceProtocolGuid = { 0x3fdda605, 0xa76e, 0x4f46, { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 }};
-GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiStatusCodeRuntimeProtocolGuid = { 0xD2B2B828, 0x0826, 0x48A7, { 0xB3, 0xDF, 0x98, 0x3C, 0x00, 0x60, 0x24, 0xF0 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiTcgProtocolGuid = { 0xf541796d, 0xa62e, 0x4954, { 0xa7, 0x75, 0x95, 0x84, 0xf6, 0x1b, 0x9c, 0xdd }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiTcg2ProtocolGuid = {0x607f766c, 0x7455, 0x42be, { 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiCcMeasurementProtocolGuid = { 0x96751a3d, 0x72f4, 0x41a6, { 0xa7, 0x94, 0xed, 0x5d, 0x0e, 0x67, 0xae, 0x6b }};
-GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiFirmwareVolumeBlockProtocolGuid = { 0x8f644fa9, 0xe850, 0x4db1, {0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4 } };
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiMpServiceProtocolGuid = { 0x3fdda605, 0xa76e, 0x4f46, { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiStatusCodeRuntimeProtocolGuid = { 0xD2B2B828, 0x0826, 0x48A7, { 0xB3, 0xDF, 0x98, 0x3C, 0x00, 0x60, 0x24, 0xF0 }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiBlockIoProtocolGuid = { 0x964E5B21, 0x6459, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiFirmwareVolumeBlockProtocolGuid = { 0x8f644fa9, 0xe850, 0x4db1, {0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4 } };
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiDiskIoProtocolGuid = { 0xCE345171, 0xBA0B, 0x11D2, { 0x8E, 0x4F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
 
 // Definition of SkuId Array
@@ -290,6 +302,30 @@ extern const  UINT8  _gPcd_FixedAtBuild_PcdReportStatusCodePropertyMask;
 #define _PCD_GET_MODE_8_PcdReportStatusCodePropertyMask  _gPcd_FixedAtBuild_PcdReportStatusCodePropertyMask
 //#define _PCD_SET_MODE_8_PcdReportStatusCodePropertyMask  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
 
+#define _PCD_TOKEN_PcdOptionRomImageVerificationPolicy  9U
+#define _PCD_GET_MODE_32_PcdOptionRomImageVerificationPolicy  LibPcdGet32(_PCD_TOKEN_PcdOptionRomImageVerificationPolicy)
+#define _PCD_GET_MODE_SIZE_PcdOptionRomImageVerificationPolicy  LibPcdGetSize(_PCD_TOKEN_PcdOptionRomImageVerificationPolicy)
+#define _PCD_SET_MODE_32_PcdOptionRomImageVerificationPolicy(Value)  LibPcdSet32(_PCD_TOKEN_PcdOptionRomImageVerificationPolicy, (Value))
+#define _PCD_SET_MODE_32_S_PcdOptionRomImageVerificationPolicy(Value)  LibPcdSet32S(_PCD_TOKEN_PcdOptionRomImageVerificationPolicy, (Value))
+
+#define _PCD_TOKEN_PcdRemovableMediaImageVerificationPolicy  0U
+#define _PCD_SIZE_PcdRemovableMediaImageVerificationPolicy 4
+#define _PCD_GET_MODE_SIZE_PcdRemovableMediaImageVerificationPolicy  _PCD_SIZE_PcdRemovableMediaImageVerificationPolicy 
+#define _PCD_VALUE_PcdRemovableMediaImageVerificationPolicy  0x04U
+GLOBAL_REMOVE_IF_UNREFERENCED const UINT32 _gPcd_FixedAtBuild_PcdRemovableMediaImageVerificationPolicy = _PCD_VALUE_PcdRemovableMediaImageVerificationPolicy;
+extern const  UINT32  _gPcd_FixedAtBuild_PcdRemovableMediaImageVerificationPolicy;
+#define _PCD_GET_MODE_32_PcdRemovableMediaImageVerificationPolicy  _gPcd_FixedAtBuild_PcdRemovableMediaImageVerificationPolicy
+//#define _PCD_SET_MODE_32_PcdRemovableMediaImageVerificationPolicy  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
+
+#define _PCD_TOKEN_PcdFixedMediaImageVerificationPolicy  0U
+#define _PCD_SIZE_PcdFixedMediaImageVerificationPolicy 4
+#define _PCD_GET_MODE_SIZE_PcdFixedMediaImageVerificationPolicy  _PCD_SIZE_PcdFixedMediaImageVerificationPolicy 
+#define _PCD_VALUE_PcdFixedMediaImageVerificationPolicy  0x04U
+GLOBAL_REMOVE_IF_UNREFERENCED const UINT32 _gPcd_FixedAtBuild_PcdFixedMediaImageVerificationPolicy = _PCD_VALUE_PcdFixedMediaImageVerificationPolicy;
+extern const  UINT32  _gPcd_FixedAtBuild_PcdFixedMediaImageVerificationPolicy;
+#define _PCD_GET_MODE_32_PcdFixedMediaImageVerificationPolicy  _gPcd_FixedAtBuild_PcdFixedMediaImageVerificationPolicy
+//#define _PCD_SET_MODE_32_PcdFixedMediaImageVerificationPolicy  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
+
 
 RETURN_STATUS
 EFIAPI
@@ -358,6 +394,13 @@ OpensslLibConstructor (
 
 EFI_STATUS
 EFIAPI
+DxeImageVerificationLibConstructor (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  );
+
+EFI_STATUS
+EFIAPI
 DxeTpm2MeasureBootLibConstructor (
   IN EFI_HANDLE        ImageHandle,
   IN EFI_SYSTEM_TABLE  *SystemTable
@@ -402,6 +445,9 @@ ProcessLibraryConstructorList (
 
   Status = OpensslLibConstructor ();
   ASSERT_RETURN_ERROR (Status);
+
+  Status = DxeImageVerificationLibConstructor (ImageHandle, SystemTable);
+  ASSERT_EFI_ERROR (Status);
 
   Status = DxeTpm2MeasureBootLibConstructor (ImageHandle, SystemTable);
   ASSERT_EFI_ERROR (Status);

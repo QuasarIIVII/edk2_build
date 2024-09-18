@@ -41,6 +41,17 @@ extern EFI_GUID gEdkiiRngAlgorithmUnSafe;
 extern EFI_GUID gEfiFileInfoGuid;
 extern EFI_GUID gEfiStatusCodeSpecificDataGuid;
 extern EFI_GUID gEfiStatusCodeDataTypeDebugGuid;
+extern EFI_GUID gEfiImageSecurityDatabaseGuid;
+extern EFI_GUID gEfiCertSha1Guid;
+extern EFI_GUID gEfiCertSha256Guid;
+extern EFI_GUID gEfiCertSha384Guid;
+extern EFI_GUID gEfiCertSha512Guid;
+extern EFI_GUID gEfiCertX509Guid;
+extern EFI_GUID gEfiCertX509Sha256Guid;
+extern EFI_GUID gEfiCertX509Sha384Guid;
+extern EFI_GUID gEfiCertX509Sha512Guid;
+extern EFI_GUID gEfiCertPkcs7Guid;
+extern EFI_GUID gEfiSecurityPkgTokenSpaceGuid;
 extern EFI_GUID gMeasuredFvHobGuid;
 
 // Protocols
@@ -72,12 +83,13 @@ extern EFI_GUID gEfiFirmwareVolume2ProtocolGuid;
 extern EFI_GUID gEfiLoadedImageProtocolGuid;
 extern EFI_GUID gEfiLoadFileProtocolGuid;
 extern EFI_GUID gEfiLoadFile2ProtocolGuid;
-extern EFI_GUID gEfiMpServiceProtocolGuid;
-extern EFI_GUID gEfiStatusCodeRuntimeProtocolGuid;
+extern EFI_GUID gEfiTcgProtocolGuid;
 extern EFI_GUID gEfiTcg2ProtocolGuid;
 extern EFI_GUID gEfiCcMeasurementProtocolGuid;
-extern EFI_GUID gEfiFirmwareVolumeBlockProtocolGuid;
+extern EFI_GUID gEfiMpServiceProtocolGuid;
+extern EFI_GUID gEfiStatusCodeRuntimeProtocolGuid;
 extern EFI_GUID gEfiBlockIoProtocolGuid;
+extern EFI_GUID gEfiFirmwareVolumeBlockProtocolGuid;
 extern EFI_GUID gEfiDiskIoProtocolGuid;
 
 // Definition of SkuId Array

@@ -97,6 +97,7 @@ extern EFI_GUID gEfiConfProfilesEbbrSpec21Guid;
 extern EFI_GUID gEfiConfProfilesEbbrSpec22Guid;
 extern EFI_GUID gShellInstall1HiiGuid;
 extern EFI_GUID gShellNetwork1HiiGuid;
+extern EFI_GUID gShellNetwork2HiiGuid;
 
 // Protocols
 extern EFI_GUID gEfiShellProtocolGuid;

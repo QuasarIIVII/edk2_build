@@ -28,6 +28,7 @@
 [Binaries.X64]
   PE32|PlatformDxe.efi
   DXE_DEPEX|PlatformDxe.depex
+  BIN|PlatformDxeOffset.bin
 
 [PatchPcd.X64]
 

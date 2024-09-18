@@ -82,6 +82,7 @@
 
   ## SOMETIMES_CONSUMES
   ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
   gEfiSimpleFileSystemProtocolGuid
 
   ## SOMETIMES_CONSUMES # Consumes if gEfiGraphicsOutputProtocolGuid uninstalled
@@ -106,6 +107,7 @@
   gEfiDriverDiagnostics2ProtocolGuid
 
   ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
   gEfiFirmwareVolume2ProtocolGuid
 
   ## SOMETIMES_CONSUMES
@@ -119,22 +121,28 @@
   ## SOMETIMES_CONSUMES
   gEfiLoadFile2ProtocolGuid
 
+  ## SOMETIMES_CONSUMES
+  gEfiTcgProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiTcg2ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiCcMeasurementProtocolGuid
+
   gEfiMpServiceProtocolGuid
 
   ## CONSUMES
   gEfiStatusCodeRuntimeProtocolGuid
 
   ## SOMETIMES_CONSUMES
-  gEfiTcg2ProtocolGuid
-
   ## SOMETIMES_CONSUMES
-  gEfiCcMeasurementProtocolGuid
+  gEfiBlockIoProtocolGuid
 
   ## SOMETIMES_CONSUMES
   gEfiFirmwareVolumeBlockProtocolGuid
-
-  ## SOMETIMES_CONSUMES
-  gEfiBlockIoProtocolGuid
 
   ## SOMETIMES_CONSUMES
   gEfiDiskIoProtocolGuid
@@ -181,6 +189,44 @@
   ## SOMETIMES_CONSUMES ## UNDEFINED
   gEfiStatusCodeDataTypeDebugGuid
 
+  ## SOMETIMES_CONSUMES   ## Variable:L"DB"
+  ## SOMETIMES_CONSUMES   ## Variable:L"DBX"
+  ## SOMETIMES_CONSUMES   ## Variable:L"DBT"
+  ## PRODUCES             ## SystemTable
+  ## CONSUMES             ## SystemTable
+  gEfiImageSecurityDatabaseGuid
+
+  ## SOMETIMES_CONSUMES   ## GUID       # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES   ## GUID       # Unique ID for the type of the signature.
+  gEfiCertSha1Guid
+
+  ## SOMETIMES_CONSUMES   ## GUID       # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES   ## GUID       # Unique ID for the type of the signature.
+  gEfiCertSha256Guid
+
+  ## SOMETIMES_CONSUMES   ## GUID       # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES   ## GUID       # Unique ID for the type of the signature.
+  gEfiCertSha384Guid
+
+  ## SOMETIMES_CONSUMES   ## GUID       # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES   ## GUID       # Unique ID for the type of the signature.
+  gEfiCertSha512Guid
+
+  ## SOMETIMES_CONSUMES    ## GUID     # Unique ID for the type of the signature.
+  gEfiCertX509Guid
+
+  ## SOMETIMES_CONSUMES    ## GUID     # Unique ID for the type of the signature.
+  gEfiCertX509Sha256Guid
+
+  ## SOMETIMES_CONSUMES    ## GUID     # Unique ID for the type of the signature.
+  gEfiCertX509Sha384Guid
+
+  ## SOMETIMES_CONSUMES    ## GUID     # Unique ID for the type of the signature.
+  gEfiCertX509Sha512Guid
+
+  ## SOMETIMES_CONSUMES    ## GUID     # Unique ID for the type of the certificate.
+  gEfiCertPkcs7Guid
+
   ## SOMETIMES_CONSUMES ## HOB
   gMeasuredFvHobGuid
 
@@ -213,15 +259,17 @@
 #  MdePkg/Library/BasePeCoffExtraActionLibNull/BasePeCoffExtraActionLibNull.inf
 #  MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
 #  CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
-#  CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf
+#  CryptoPkg/Library/OpensslLib/OpensslLib.inf
 #  MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
+#  SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib.inf
 #  MdePkg/Library/BasePeCoffLib/BasePeCoffLib.inf
 #  CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
-#  MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
 #  MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf
+#  MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
 #  MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf
 #  MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
 #  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
+#  SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.inf
 #  SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.inf
 
 [Depex.X64]

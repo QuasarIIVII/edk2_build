@@ -35,6 +35,7 @@
 [Binaries.X64]
   PE32|DriverHealthManagerDxe.efi
   DXE_DEPEX|DriverHealthManagerDxe.depex
+  BIN|DriverHealthManagerDxeOffset.bin
 
 [PatchPcd.X64]
 

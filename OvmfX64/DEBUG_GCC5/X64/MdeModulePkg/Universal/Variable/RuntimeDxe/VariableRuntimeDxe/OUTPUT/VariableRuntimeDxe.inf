@@ -31,6 +31,7 @@
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   OvmfPkg/OvmfPkg.dec
+  SecurityPkg/SecurityPkg.dec
 
 [Binaries.X64]
   PE32|VariableRuntimeDxe.efi
@@ -137,6 +138,8 @@
 [Ppis.X64]
 
 [Guids.X64]
+  ## CONSUMES            ## Variable:L"AuthVarKeyDatabase"
+  ## PRODUCES            ## Variable:L"AuthVarKeyDatabase"
   ## SOMETIMES_CONSUMES   ## GUID # Signature of Variable store header
   ## SOMETIMES_PRODUCES   ## GUID # Signature of Variable store header
   ## SOMETIMES_CONSUMES   ## HOB
@@ -154,6 +157,15 @@
   ## SOMETIMES_CONSUMES  ## Variable:L"Driver####"
   ## SOMETIMES_CONSUMES  ## Variable:L"SysPrep####"
   ## SOMETIMES_CONSUMES  ## Variable:L"Key####"
+  ## CONSUMES            ## Variable:L"SetupMode"
+  ## PRODUCES            ## Variable:L"SetupMode"
+  ## SOMETIMES_CONSUMES  ## Variable:L"PK"
+  ## SOMETIMES_CONSUMES  ## Variable:L"KEK"
+  ## CONSUMES            ## Variable:L"SecureBoot"
+  ## PRODUCES            ## Variable:L"SecureBoot"
+  ## CONSUMES            ## Variable:L"SignatureSupport"
+  ## PRODUCES            ## Variable:L"SignatureSupport"
+  ## PRODUCES            ## Variable:L"VendorKeys"
   ## SOMETIMES_CONSUMES   ## Variable:L"LangCodes"
   ## SOMETIMES_CONSUMES   ## Variable:L"Lang"
   ## SOMETIMES_CONSUMES   ## Variable:L"Timeout"
@@ -220,6 +232,9 @@
   ## SOMETIMES_PRODUCES   ## Variable:L"VarErrorFlag"
   gEdkiiVarErrorFlagGuid
 
+  ## SOMETIMES_CONSUMES  ## Variable:L"DB"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DBX"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DBT"
   ## SOMETIMES_CONSUMES   ## Variable:L"DB"
   ## SOMETIMES_CONSUMES   ## Variable:L"DBX"
   ## SOMETIMES_CONSUMES   ## Variable:L"DBT"
@@ -251,12 +266,41 @@
   ## CONSUMES
   gUefiOvmfPkgPlatformInfoGuid
 
+  gEdkiiRngAlgorithmUnSafe
+
   ## SOMETIMES_CONSUMES   ## Variable:L"HwErrRec####"
   ## SOMETIMES_CONSUMES    ## Variable:L"HwErrRec####"
   gEfiHardwareErrorVariableGuid
 
   ## CONSUMES  ## SystemTable
   gEfiDxeServicesTableGuid
+
+  ## CONSUMES            ## Variable:L"SecureBootEnable"
+  ## PRODUCES            ## Variable:L"SecureBootEnable"
+  gEfiSecureBootEnableDisableGuid
+
+  ## CONSUMES            ## Variable:L"CustomMode"
+  ## PRODUCES            ## Variable:L"CustomMode"
+  gEfiCustomModeEnableGuid
+
+  ## CONSUMES            ## Variable:L"certdb"
+  ## CONSUMES            ## Variable:L"certdbv"
+  ## PRODUCES            ## Variable:L"certdb"
+  ## PRODUCES            ## Variable:L"certdbv"
+  gEfiCertDbGuid
+
+  ## CONSUMES            ## Variable:L"VendorKeysNv"
+  ## PRODUCES            ## Variable:L"VendorKeysNv"
+  gEfiVendorKeysNvGuid
+
+  ## SOMETIMES_CONSUMES   ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertTypeRsa2048Sha256Guid
+
+  ## SOMETIMES_CONSUMES   ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertPkcs7Guid
+
+  ## SOMETIMES_CONSUMES   ## GUID  # Unique ID for the type of the signature.
+  gEfiCertX509Guid
 
   ## CONSUMES     ## HOB
   gVariableFlashInfoHobGuid
@@ -272,8 +316,8 @@
 #  MdePkg/Library/BaseLib/BaseLib.inf
 #  MdePkg/Library/TdxLib/TdxLib.inf
 #  MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
-#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
 #  MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev.inf
+#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
 #  OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort.inf
 #  OvmfPkg/Library/CcProbeLib/DxeCcProbeLib.inf
 #  MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
@@ -286,16 +330,21 @@
 #  OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35.inf
 #  MdePkg/Library/DxeHobLib/DxeHobLib.inf
 #  OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib.inf
+#  MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib.inf
+#  CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
+#  CryptoPkg/Library/OpensslLib/OpensslLib.inf
 #  MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
+#  OvmfPkg/Library/PlatformSecureLib/PlatformSecureLib.inf
+#  CryptoPkg/Library/BaseCryptLib/RuntimeCryptLib.inf
+#  MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf
 #  MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
 #  MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
 #  MdePkg/Library/UefiRuntimeLib/UefiRuntimeLib.inf
 #  MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib.inf
 #  MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf
 #  SecurityPkg/Library/DxeTpmMeasurementLib/DxeTpmMeasurementLib.inf
-#  MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull.inf
+#  SecurityPkg/Library/AuthVariableLib/AuthVariableLib.inf
 #  MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf
-#  MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf
 #  MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib.inf
 #  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
 #  MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib.inf

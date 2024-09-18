@@ -28,6 +28,7 @@
   ASL|RamDisk.aml
   PE32|RamDiskDxe.efi
   DXE_DEPEX|RamDiskDxe.depex
+  BIN|RamDiskDxeOffset.bin
 
 [PatchPcd.X64]
 

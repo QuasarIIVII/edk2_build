@@ -34,6 +34,7 @@
 [Binaries.X64]
   PE32|Ip4Dxe.efi
   DXE_DEPEX|Ip4Dxe.depex
+  BIN|Ip4DxeOffset.bin
 
 [PatchPcd.X64]
 

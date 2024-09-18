@@ -246,8 +246,6 @@ INIT_TARGET = init
 PCH_TARGET =
 BC_TARGET = 
 CODA_TARGET = /home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/OvmfPkg/LinuxInitrdDynamicShellCommand/LinuxInitrdDynamicShellCommand/OUTPUT/LinuxInitrdDynamicShellCommand.efi \
-              $(FFS_OUTPUT_DIR)/$(MODULE_GUID).map \
-              $(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs \
               
 
 #
@@ -384,18 +382,6 @@ $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommandhii.lib : $(HII_BINARY_PACKAGES)
 	"$(GENFW)" -o $(OUTPUT_DIR)/$(MODULE_NAME)hii.rc -g $(MODULE_GUID) --hiibinpackage $(HII_BINARY_PACKAGES) $(GENFW_FLAGS)
 	"$(RC)" $(RC_FLAGS) $(OUTPUT_DIR)/$(MODULE_NAME)hii.rc /home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/OvmfPkg/LinuxInitrdDynamicShellCommand/LinuxInitrdDynamicShellCommand/OUTPUT/LinuxInitrdDynamicShellCommandhii.lib
 
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID).map : $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.map
-	test -f $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.map && $(CP) $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.map $(FFS_OUTPUT_DIR)/$(MODULE_GUID).map
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs : $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver
-	GenFfs -t EFI_FV_FILETYPE_DRIVER -g $(MODULE_GUID) -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx : $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.depex
-	-test -e $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.depex && GenSec -s EFI_SECTION_DXE_DEPEX -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.depex
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 : $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.efi
-	-test -e $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.efi && GenSec -s EFI_SECTION_PE32 -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 $(OUTPUT_DIR)/LinuxInitrdDynamicShellCommand.efi
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui : $(MODULE_DIR)/$(MODULE_FILE)
-	GenSec -s EFI_SECTION_USER_INTERFACE -n $(MODULE_NAME) -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver : $(MODULE_DIR)/$(MODULE_FILE)
-	GenSec -s EFI_SECTION_VERSION -n 1.0 -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver
 
 
 #

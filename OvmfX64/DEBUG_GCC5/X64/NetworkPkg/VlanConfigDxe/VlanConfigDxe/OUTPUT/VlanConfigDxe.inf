@@ -30,6 +30,7 @@
 [Binaries.X64]
   PE32|VlanConfigDxe.efi
   DXE_DEPEX|VlanConfigDxe.depex
+  BIN|VlanConfigDxeOffset.bin
 
 [PatchPcd.X64]
 

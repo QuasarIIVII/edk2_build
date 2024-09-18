@@ -249,8 +249,6 @@ INIT_TARGET = init
 PCH_TARGET =
 BC_TARGET = 
 CODA_TARGET = /home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/ShellPkg/DynamicCommand/HttpDynamicCommand/HttpDynamicCommand/OUTPUT/httpDynamicCommand.efi \
-              $(FFS_OUTPUT_DIR)/$(MODULE_GUID).map \
-              $(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs \
               
 
 #
@@ -395,18 +393,6 @@ $(OUTPUT_DIR)/httpDynamicCommandhii.lib : $(HII_BINARY_PACKAGES)
 	"$(GENFW)" -o $(OUTPUT_DIR)/$(MODULE_NAME)hii.rc -g $(MODULE_GUID) --hiibinpackage $(HII_BINARY_PACKAGES) $(GENFW_FLAGS)
 	"$(RC)" $(RC_FLAGS) $(OUTPUT_DIR)/$(MODULE_NAME)hii.rc /home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/ShellPkg/DynamicCommand/HttpDynamicCommand/HttpDynamicCommand/OUTPUT/httpDynamicCommandhii.lib
 
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID).map : $(OUTPUT_DIR)/httpDynamicCommand.map
-	test -f $(OUTPUT_DIR)/httpDynamicCommand.map && $(CP) $(OUTPUT_DIR)/httpDynamicCommand.map $(FFS_OUTPUT_DIR)/$(MODULE_GUID).map
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs : $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver
-	GenFfs -t EFI_FV_FILETYPE_DRIVER -g $(MODULE_GUID) -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx : $(OUTPUT_DIR)/httpDynamicCommand.depex
-	-test -e $(OUTPUT_DIR)/httpDynamicCommand.depex && GenSec -s EFI_SECTION_DXE_DEPEX -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.dpx $(OUTPUT_DIR)/httpDynamicCommand.depex
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 : $(OUTPUT_DIR)/httpDynamicCommand.efi
-	-test -e $(OUTPUT_DIR)/httpDynamicCommand.efi && GenSec -s EFI_SECTION_PE32 -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.1.pe32 $(OUTPUT_DIR)/httpDynamicCommand.efi
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui : $(MODULE_DIR)/$(MODULE_FILE)
-	GenSec -s EFI_SECTION_USER_INTERFACE -n $(MODULE_NAME) -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ui
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver : $(MODULE_DIR)/$(MODULE_FILE)
-	GenSec -s EFI_SECTION_VERSION -n 1.0 -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC4.ver
 
 
 #

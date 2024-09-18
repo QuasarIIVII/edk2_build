@@ -237,6 +237,7 @@ STATIC_LIBRARY_FILES =  \
     $(BIN_DIR)/ShellPkg/Library/UefiShellLevel3CommandsLib/UefiShellLevel3CommandsLib/OUTPUT/UefiShellLevel3CommandsLib.lib \
     $(BIN_DIR)/ShellPkg/Library/UefiShellLib/UefiShellLib/OUTPUT/UefiShellLib.lib \
     $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork1CommandsLib/UefiShellNetwork1CommandsLib/OUTPUT/UefiShellNetwork1CommandsLib.lib \
+    $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork2CommandsLib/UefiShellNetwork2CommandsLib/OUTPUT/UefiShellNetwork2CommandsLib.lib \
     $(OUTPUT_DIR)/Shell.lib
 
 INC =  \
@@ -266,8 +267,6 @@ INIT_TARGET = init
 PCH_TARGET =
 BC_TARGET = 
 CODA_TARGET = /home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/ShellPkg/Application/Shell/Shell/OUTPUT/Shell.efi \
-              $(FFS_OUTPUT_DIR)/$(MODULE_GUID).map \
-              $(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs \
               
 
 #
@@ -369,6 +368,7 @@ gen_libs:
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellDebug1CommandsLib/UefiShellDebug1CommandsLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellInstall1CommandsLib/UefiShellInstall1CommandsLib/GNUmakefile
 	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork1CommandsLib/UefiShellNetwork1CommandsLib/GNUmakefile
+	@"$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork2CommandsLib/UefiShellNetwork2CommandsLib/GNUmakefile
 	@cd $(MODULE_BUILD_DIR)
 
 #
@@ -462,20 +462,6 @@ $(OUTPUT_DIR)/Shell.efi : $(DEBUG_DIR)/Shell.dll
 $(OUTPUT_DIR)/Shell.map : $(OUTPUT_DIR)/Shell.efi
 	
 
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID).map : $(OUTPUT_DIR)/Shell.map
-	test -f $(OUTPUT_DIR)/Shell.map && $(CP) $(OUTPUT_DIR)/Shell.map $(FFS_OUTPUT_DIR)/$(MODULE_GUID).map
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs : $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.pe32 $(FFS_OUTPUT_DIR)/ShellOffset.raw $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.ui $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ver
-	GenFfs -t EFI_FV_FILETYPE_APPLICATION -g $(MODULE_GUID) -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID).ffs -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.pe32 -oi $(FFS_OUTPUT_DIR)/ShellOffset.raw -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.ui -oi $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ver
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.pe32 : $(OUTPUT_DIR)/Shell.efi
-	-test -e $(OUTPUT_DIR)/Shell.efi && GenSec -s EFI_SECTION_PE32 -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC1.1.pe32 $(OUTPUT_DIR)/Shell.efi
-$(FFS_OUTPUT_DIR)/ShellOffset.raw : $(FFS_OUTPUT_DIR)/Shell.offset
-	-test -e $(FFS_OUTPUT_DIR)/Shell.offset && GenSec -s EFI_SECTION_RAW -o $(FFS_OUTPUT_DIR)/ShellOffset.raw $(FFS_OUTPUT_DIR)/Shell.offset
-$(FFS_OUTPUT_DIR)/Shell.offset : $(DEBUG_DIR)/Shell.efi
-	Trim --Vfr-Uni-Offset -o $(FFS_OUTPUT_DIR)/Shell.offset --ModuleName=Shell --DebugDir=/home/enyephy/edk2/edk2/Build/OvmfX64/DEBUG_GCC5/X64/ShellPkg/Application/Shell/Shell/DEBUG 
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.ui : $(MODULE_DIR)/$(MODULE_FILE)
-	GenSec -s EFI_SECTION_USER_INTERFACE -n $(MODULE_NAME) -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC2.ui
-$(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ver : $(MODULE_DIR)/$(MODULE_FILE)
-	GenSec -s EFI_SECTION_VERSION -n 1.0 -o $(FFS_OUTPUT_DIR)/$(MODULE_GUID)SEC3.ver
 
 
 #
@@ -541,5 +527,6 @@ cleanlib:
 	-@test -e $(BIN_DIR)/ShellPkg/Library/UefiShellDebug1CommandsLib/UefiShellDebug1CommandsLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellDebug1CommandsLib/UefiShellDebug1CommandsLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/ShellPkg/Library/UefiShellInstall1CommandsLib/UefiShellInstall1CommandsLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellInstall1CommandsLib/UefiShellInstall1CommandsLib/GNUmakefile cleanall
 	-@test -e $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork1CommandsLib/UefiShellNetwork1CommandsLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork1CommandsLib/UefiShellNetwork1CommandsLib/GNUmakefile cleanall
+	-@test -e $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork2CommandsLib/UefiShellNetwork2CommandsLib/GNUmakefile && "$(MAKE)" $(MAKE_FLAGS) -f $(BIN_DIR)/ShellPkg/Library/UefiShellNetwork2CommandsLib/UefiShellNetwork2CommandsLib/GNUmakefile cleanall
 	@cd $(MODULE_BUILD_DIR)
 

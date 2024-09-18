@@ -519,7 +519,7 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdQemuBootOrderMmioTranslation;
 #define _PCD_TOKEN_PcdSecureBootSupported  0U
 #define _PCD_SIZE_PcdSecureBootSupported 1
 #define _PCD_GET_MODE_SIZE_PcdSecureBootSupported  _PCD_SIZE_PcdSecureBootSupported 
-#define _PCD_VALUE_PcdSecureBootSupported  ((BOOLEAN)0U)
+#define _PCD_VALUE_PcdSecureBootSupported  ((BOOLEAN)1U)
 GLOBAL_REMOVE_IF_UNREFERENCED const BOOLEAN _gPcd_FixedAtBuild_PcdSecureBootSupported = _PCD_VALUE_PcdSecureBootSupported;
 extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdSecureBootSupported;
 #define _PCD_GET_MODE_BOOL_PcdSecureBootSupported  _gPcd_FixedAtBuild_PcdSecureBootSupported

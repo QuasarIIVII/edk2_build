@@ -49,8 +49,16 @@ extern EFI_GUID gEfiAcpi20TableGuid;
 extern EFI_GUID gEfiAcpi10TableGuid;
 extern EFI_GUID gEfiHobListGuid;
 extern EFI_GUID gUefiOvmfPkgPlatformInfoGuid;
+extern EFI_GUID gEdkiiRngAlgorithmUnSafe;
 extern EFI_GUID gEfiHardwareErrorVariableGuid;
 extern EFI_GUID gEfiDxeServicesTableGuid;
+extern EFI_GUID gEfiSecureBootEnableDisableGuid;
+extern EFI_GUID gEfiCustomModeEnableGuid;
+extern EFI_GUID gEfiCertDbGuid;
+extern EFI_GUID gEfiVendorKeysNvGuid;
+extern EFI_GUID gEfiCertTypeRsa2048Sha256Guid;
+extern EFI_GUID gEfiCertPkcs7Guid;
+extern EFI_GUID gEfiCertX509Guid;
 extern EFI_GUID gVariableFlashInfoHobGuid;
 
 // Protocols
@@ -126,7 +134,7 @@ extern const  UINT32  _gPcd_FixedAtBuild_PcdMaxAuthVariableSize;
 #define _PCD_TOKEN_PcdMaxVolatileVariableSize  0U
 #define _PCD_SIZE_PcdMaxVolatileVariableSize 4
 #define _PCD_GET_MODE_SIZE_PcdMaxVolatileVariableSize  _PCD_SIZE_PcdMaxVolatileVariableSize 
-#define _PCD_VALUE_PcdMaxVolatileVariableSize  0x00U
+#define _PCD_VALUE_PcdMaxVolatileVariableSize  0x40000U
 extern const  UINT32  _gPcd_FixedAtBuild_PcdMaxVolatileVariableSize;
 #define _PCD_GET_MODE_32_PcdMaxVolatileVariableSize  _gPcd_FixedAtBuild_PcdMaxVolatileVariableSize
 //#define _PCD_SET_MODE_32_PcdMaxVolatileVariableSize  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD
@@ -142,7 +150,7 @@ extern const  UINT32  _gPcd_FixedAtBuild_PcdMaxHardwareErrorVariableSize;
 #define _PCD_TOKEN_PcdVariableStoreSize  0U
 #define _PCD_SIZE_PcdVariableStoreSize 4
 #define _PCD_GET_MODE_SIZE_PcdVariableStoreSize  _PCD_SIZE_PcdVariableStoreSize 
-#define _PCD_VALUE_PcdVariableStoreSize  0x40000U
+#define _PCD_VALUE_PcdVariableStoreSize  0x80000U
 extern const  UINT32  _gPcd_FixedAtBuild_PcdVariableStoreSize;
 #define _PCD_GET_MODE_32_PcdVariableStoreSize  _gPcd_FixedAtBuild_PcdVariableStoreSize
 //#define _PCD_SET_MODE_32_PcdVariableStoreSize  ASSERT(FALSE)  // It is not allowed to set value for a FIXED_AT_BUILD PCD

@@ -88,6 +88,7 @@ GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiConfProfilesEbbrSpec21Guid = { 0xcce3
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiConfProfilesEbbrSpec22Guid = { 0x9073eed4, 0xe50d, 0x11ee, { 0xb8, 0xb0, 0x8b, 0x68, 0xda, 0x62, 0xfc, 0x80 }};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gShellInstall1HiiGuid = {0x7d574d54, 0xd364, 0x4d4a, {0x95, 0xe3, 0x49, 0x45, 0xdb, 0x7a, 0xd3, 0xee}};
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gShellNetwork1HiiGuid = {0xf3d301bb, 0xf4a5, 0x45a8, {0xb0, 0xb7, 0xfa, 0x99, 0x9c, 0x62, 0x37, 0xae}};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gShellNetwork2HiiGuid = {0x174b2b5, 0xf505, 0x4b12, {0xaa, 0x60, 0x59, 0xdf, 0xf8, 0xd6, 0xea, 0x37}};
 
 // Protocols
 GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiShellProtocolGuid = { 0x6302d008, 0x7f9b, 0x4f30, {0x87, 0xac, 0x60, 0xc9, 0xfe, 0xf5, 0xda, 0x4e }};
@@ -864,6 +865,13 @@ ShellNetwork1CommandsLibConstructor (
   IN EFI_SYSTEM_TABLE  *SystemTable
   );
 
+EFI_STATUS
+EFIAPI
+ShellNetwork2CommandsLibConstructor (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  );
+
 
 VOID
 EFIAPI
@@ -931,8 +939,18 @@ ProcessLibraryConstructorList (
   Status = ShellNetwork1CommandsLibConstructor (ImageHandle, SystemTable);
   ASSERT_EFI_ERROR (Status);
 
+  Status = ShellNetwork2CommandsLibConstructor (ImageHandle, SystemTable);
+  ASSERT_EFI_ERROR (Status);
+
 }
 
+
+EFI_STATUS
+EFIAPI
+ShellNetwork2CommandsLibDestructor (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  );
 
 EFI_STATUS
 EFIAPI
@@ -1013,6 +1031,9 @@ ProcessLibraryDestructorList (
   )
 {
   EFI_STATUS  Status;
+
+  Status = ShellNetwork2CommandsLibDestructor (ImageHandle, SystemTable);
+  ASSERT_EFI_ERROR (Status);
 
   Status = ShellNetwork1CommandsLibDestructor (ImageHandle, SystemTable);
   ASSERT_EFI_ERROR (Status);
