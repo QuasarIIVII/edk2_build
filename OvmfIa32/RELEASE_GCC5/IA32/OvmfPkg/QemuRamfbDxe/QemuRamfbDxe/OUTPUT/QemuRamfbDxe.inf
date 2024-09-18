@@ -1,0 +1,131 @@
+## @file
+#  This driver is a implementation of the Graphics Output Protocol
+#  for the QEMU ramfb device.
+#
+#  Copyright (c) 2018, Red Hat Inc.
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+# DO NOT EDIT
+# FILE auto-generated
+
+[Defines]
+  INF_VERSION                = 0x00010017
+  BASE_NAME                  = QemuRamfbDxe
+  FILE_GUID                  = dce1b094-7dc6-45d0-9fdd-d7fc3cc3e4ef
+  MODULE_TYPE                = DXE_DRIVER
+  VERSION_STRING             = 1.0
+  ENTRY_POINT                = InitializeQemuRamfb
+
+[Packages.IA32]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  OvmfPkg/OvmfPkg.dec
+
+[Binaries.IA32]
+  PE32|QemuRamfbDxe.efi
+  DXE_DEPEX|QemuRamfbDxe.depex
+
+[PatchPcd.IA32]
+
+[Protocols.IA32]
+  ## PRODUCES
+  gEfiGraphicsOutputProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gPcdProtocolGuid
+
+  ## CONSUMES
+  gEfiPcdProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gGetPcdInfoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGetPcdInfoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathProtocolGuid
+
+  ## CONSUMES
+  gEfiDevicePathUtilitiesProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathToTextProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathFromTextProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiLoadedImageProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEdkiiIoMmuProtocolGuid
+
+
+[Ppis.IA32]
+
+[Guids.IA32]
+  gQemuRamfbGuid
+
+
+[PcdEx.IA32]
+
+[LibraryClasses.IA32]
+## @LIB_INSTANCES
+#  MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+#  MdePkg/Library/DxePcdLib/DxePcdLib.inf
+#  MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
+#  MdePkg/Library/BaseLib/BaseLib.inf
+#  MdePkg/Library/CcProbeLibNull/CcProbeLibNull.inf
+#  MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
+#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
+#  MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev.inf
+#  OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort.inf
+#  MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
+#  UefiCpuPkg/Library/AmdSvsmLibNull/AmdSvsmLibNull.inf
+#  UefiCpuPkg/Library/CcExitLibNull/CcExitLibNull.inf
+#  MdePkg/Library/BaseCpuLib/BaseCpuLib.inf
+#  MdePkg/Library/BaseCacheMaintenanceLib/BaseCacheMaintenanceLib.inf
+#  MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+#  OvmfPkg/Library/BaseMemEncryptTdxLib/BaseMemEncryptTdxLibNull.inf
+#  OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+#  MdePkg/Library/UefiDevicePathLibDevicePathProtocol/UefiDevicePathLibDevicePathProtocol.inf
+#  MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+#  MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf
+#  OvmfPkg/Library/QemuFwCfgLib/QemuFwCfgDxeLib.inf
+#  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
+
+[Depex.IA32]
+#  (TRUE) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiBdsArchProtocolGuid AND gEfiCpuArchProtocolGuid AND gEfiMetronomeArchProtocolGuid AND gEfiMonotonicCounterArchProtocolGuid AND gEfiRealTimeClockArchProtocolGuid AND gEfiResetArchProtocolGuid AND gEfiRuntimeArchProtocolGuid AND gEfiSecurityArchProtocolGuid AND gEfiTimerArchProtocolGuid AND gEfiVariableWriteArchProtocolGuid AND gEfiVariableArchProtocolGuid AND gEfiWatchdogTimerArchProtocolGuid) AND (gEdkiiIoMmuProtocolGuid OR gIoMmuAbsentProtocolGuid)
+
+
+
+
+
+[BuildOptions.IA32]
+## @AsBuilt
+##   GCC:RELEASE_GCC5_IA32_ASMLINK_FLAGS = /nologo /tiny
+##   GCC:RELEASE_GCC5_IA32_DLINK2_FLAGS = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wno-error -no-pie
+##   GCC:RELEASE_GCC5_IA32_DTC_FLAGS = -H epapr
+##   GCC:RELEASE_GCC5_IA32_DLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive -flto -Os -Wl,-m,elf_i386,--oformat=elf32-i386
+##   GCC:RELEASE_GCC5_IA32_VFRPP_FLAGS = -x c -E -P -DVFRCOMPILE --include $(MODULE_NAME)StrDefs.h
+##   GCC:RELEASE_GCC5_IA32_OPTROM_FLAGS = -e
+##   GCC:RELEASE_GCC5_IA32_NASM_FLAGS = -f elf32
+##   GCC:RELEASE_GCC5_IA32_APP_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASL_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_PP_FLAGS = -E -x assembler-with-cpp -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_OBJCOPY_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASLCC_FLAGS = -x c -fno-lto -m32
+##   GCC:RELEASE_GCC5_IA32_SYMRENAME_FLAGS = Symbol renaming not needed for
+##   GCC:RELEASE_GCC5_IA32_NASMB_FLAGS = -f bin
+##   GCC:RELEASE_GCC5_IA32_ASLPP_FLAGS = -x c -E -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_ASLDLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--defsym=PECOFF_HEADER_SIZE=0 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable -Wl,-m,elf_i386 -no-pie
+##   GCC:RELEASE_GCC5_IA32_GENFW_FLAGS = --zero
+##   GCC:RELEASE_GCC5_IA32_DEPS_FLAGS = -MMD -MF $@.deps
+##   GCC:RELEASE_GCC5_IA32_VFR_FLAGS = -l -n
+##   GCC:RELEASE_GCC5_IA32_RC_FLAGS = -I binary -O elf32-i386          -B i386        --rename-section .data=.hii
+##   GCC:RELEASE_GCC5_IA32_ASM_FLAGS = -c -x assembler -imacros AutoGen.h -m32 -march=i386
+##   GCC:RELEASE_GCC5_IA32_CC_FLAGS = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -mstack-protector-guard=global -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie -flto -Wno-unused-but-set-variable -Wno-unused-const-variable -DMDEPKG_NDEBUG -mno-mmx -mno-sse -D DISABLE_NEW_DEPRECATED_INTERFACES -D ENABLE_MD5_DEPRECATED_INTERFACES

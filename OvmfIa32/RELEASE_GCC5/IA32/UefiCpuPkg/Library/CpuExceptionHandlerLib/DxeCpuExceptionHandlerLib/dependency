@@ -1,0 +1,15 @@
+
+
+-include /home/enyephy/edk2/edk2/Build/OvmfIa32/RELEASE_GCC5/IA32/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/OUTPUT/Ia32/ExceptionTssEntryAsm.obj.deps
+
+-include /home/enyephy/edk2/edk2/Build/OvmfIa32/RELEASE_GCC5/IA32/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/OUTPUT/Ia32/ExceptionHandlerAsm.obj.deps
+
+-include /home/enyephy/edk2/edk2/Build/OvmfIa32/RELEASE_GCC5/IA32/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/OUTPUT/Ia32/ArchExceptionHandler.obj.deps
+
+-include /home/enyephy/edk2/edk2/Build/OvmfIa32/RELEASE_GCC5/IA32/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/OUTPUT/PeiDxeSmmCpuException.obj.deps
+
+-include /home/enyephy/edk2/edk2/Build/OvmfIa32/RELEASE_GCC5/IA32/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/OUTPUT/DxeException.obj.deps
+
+-include /home/enyephy/edk2/edk2/Build/OvmfIa32/RELEASE_GCC5/IA32/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/OUTPUT/CpuExceptionCommon.obj.deps
+
+               

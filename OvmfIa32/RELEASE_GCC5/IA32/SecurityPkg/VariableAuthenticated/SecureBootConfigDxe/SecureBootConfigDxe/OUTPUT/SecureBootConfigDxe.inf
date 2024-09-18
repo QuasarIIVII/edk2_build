@@ -1,0 +1,378 @@
+## @file
+#  Provides the capability to configure secure boot in a setup browser
+#  By this module, user may change the content of DB, DBX, PK and KEK.
+#
+# Copyright (c) 2011 - 2018, Intel Corporation. All rights reserved.<BR>
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+# DO NOT EDIT
+# FILE auto-generated
+
+[Defines]
+  INF_VERSION                = 0x00010017
+  BASE_NAME                  = SecureBootConfigDxe
+  FILE_GUID                  = F0E6A44F-7195-41c3-AC64-54F202CD0A21
+  MODULE_TYPE                = DXE_DRIVER
+  VERSION_STRING             = 1.0
+  ENTRY_POINT                = SecureBootConfigDriverEntryPoint
+  UNLOAD_IMAGE               = SecureBootConfigDriverUnload
+  MODULE_UNI_FILE            = SecureBootConfigDxe.uni
+
+[Packages.IA32]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  SecurityPkg/SecurityPkg.dec
+  OvmfPkg/OvmfPkg.dec
+
+[Binaries.IA32]
+  PE32|SecureBootConfigDxe.efi
+  DXE_DEPEX|SecureBootConfigDxe.depex
+
+[PatchPcd.IA32]
+
+[Protocols.IA32]
+  ## PRODUCES
+  ## PRODUCES
+  gEfiHiiConfigAccessProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  ## PRODUCES
+  gEfiDevicePathProtocolGuid
+
+  gEfiHiiPopupProtocolGuid
+
+  ## CONSUMES
+  gEfiRealTimeClockArchProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gPcdProtocolGuid
+
+  ## CONSUMES
+  gEfiPcdProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gGetPcdInfoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGetPcdInfoProtocolGuid
+
+  ## CONSUMES
+  gEfiDevicePathUtilitiesProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## PRODUCES
+  gEfiDevicePathToTextProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathFromTextProtocolGuid
+
+  ## SOMETIMES_PRODUCES
+  gEfiDriverBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleTextOutProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGraphicsOutputProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiHiiFontProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleFileSystemProtocolGuid
+
+  ## SOMETIMES_CONSUMES # Consumes if gEfiGraphicsOutputProtocolGuid uninstalled
+  gEfiUgaDrawProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiComponentNameProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiComponentName2ProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverConfigurationProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverConfiguration2ProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverDiagnosticsProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverDiagnostics2ProtocolGuid
+
+  ## CONSUMES
+  gEfiHiiStringProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiHiiImageProtocolGuid
+
+  ## CONSUMES
+  gEfiHiiDatabaseProtocolGuid
+
+  ## CONSUMES
+  gEfiHiiConfigRoutingProtocolGuid
+
+  gEdkiiVariablePolicyProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## CONSUMES
+  gEfiFormBrowser2ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiFirmwareVolume2ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiLoadedImageProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiLoadFileProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiLoadFile2ProtocolGuid
+
+  gEfiMpServiceProtocolGuid
+
+
+[Ppis.IA32]
+
+[Guids.IA32]
+  ## CONSUMES            ## Variable:L"CustomMode"
+  ## PRODUCES            ## Variable:L"CustomMode"
+  ## CONSUMES            ## Variable:L"CustomMode"
+  ## PRODUCES            ## Variable:L"CustomMode"
+  ## SOMETIMES_CONSUMES      ## Variable:L"CustomMode"
+  ## SOMETIMES_PRODUCES      ## Variable:L"CustomMode"
+  gEfiCustomModeEnableGuid
+
+  ## CONSUMES            ## Variable:L"SecureBootEnable"
+  ## PRODUCES            ## Variable:L"SecureBootEnable"
+  ## CONSUMES            ## Variable:L"SecureBootEnable"
+  ## PRODUCES            ## Variable:L"SecureBootEnable"
+  ## SOMETIMES_CONSUMES      ## Variable:L"SecureBootEnable"
+  ## SOMETIMES_PRODUCES      ## Variable:L"SecureBootEnable"
+  gEfiSecureBootEnableDisableGuid
+
+  ## SOMETIMES_CONSUMES      ## GUID            # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES      ## GUID            # Unique ID for the type of the signature.
+  gEfiCertRsa2048Guid
+
+  ## CONSUMES
+  ## CONSUMES
+  ## SOMETIMES_CONSUMES      ## GUID            # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES      ## GUID            # Unique ID for the type of the signature.
+  gEfiCertX509Guid
+
+  ## SOMETIMES_CONSUMES      ## GUID            # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES      ## GUID            # Unique ID for the type of the signature.
+  gEfiCertSha1Guid
+
+  ## SOMETIMES_CONSUMES      ## GUID            # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES      ## GUID            # Unique ID for the type of the signature.
+  gEfiCertSha256Guid
+
+  ## SOMETIMES_CONSUMES      ## GUID            # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES      ## GUID            # Unique ID for the type of the signature.
+  gEfiCertSha384Guid
+
+  ## SOMETIMES_CONSUMES      ## GUID            # Unique ID for the type of the signature.
+  ## SOMETIMES_PRODUCES      ## GUID            # Unique ID for the type of the signature.
+  gEfiCertSha512Guid
+
+  ## SOMETIMES_CONSUMES  ## Variable:L"DB"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DBX"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DBT"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DB"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DBX"
+  ## SOMETIMES_CONSUMES  ## Variable:L"DBT"
+  ## SOMETIMES_CONSUMES      ## Variable:L"db"
+  ## SOMETIMES_PRODUCES      ## Variable:L"db"
+  ## SOMETIMES_CONSUMES      ## Variable:L"dbx"
+  ## SOMETIMES_PRODUCES      ## Variable:L"dbx"
+  gEfiImageSecurityDatabaseGuid
+
+  ## SOMETIMES_CONSUMES  ## Variable
+  ## CONSUMES            ## Variable:L"SetupMode"
+  ## PRODUCES            ## Variable:L"SetupMode"
+  ## CONSUMES            ## Variable:L"SecureBoot"
+  ## PRODUCES            ## Variable:L"SecureBoot"
+  ## PRODUCES            ## Variable:L"PK"
+  ## PRODUCES            ## Variable:L"KEK"
+  ## CONSUMES            ## Variable:L"PKDefault"
+  ## CONSUMES            ## Variable:L"KEKDefault"
+  ## CONSUMES            ## Variable:L"dbDefault"
+  ## CONSUMES            ## Variable:L"dbxDefault"
+  ## CONSUMES            ## Variable:L"dbtDefault"
+  ## CONSUMES            ## Variable:L"SetupMode"
+  ## PRODUCES            ## Variable:L"SetupMode"
+  ## CONSUMES            ## Variable:L"SecureBoot"
+  ## PRODUCES            ## Variable:L"SecureBoot"
+  ## PRODUCES            ## Variable:L"PK"
+  ## PRODUCES            ## Variable:L"KEK"
+  ## CONSUMES            ## Variable:L"PKDefault"
+  ## CONSUMES            ## Variable:L"KEKDefault"
+  ## CONSUMES            ## Variable:L"dbDefault"
+  ## CONSUMES            ## Variable:L"dbxDefault"
+  ## CONSUMES            ## Variable:L"dbtDefault"
+  ## SOMETIMES_CONSUMES      ## Variable:L"SetupMode"
+  ## SOMETIMES_PRODUCES      ## Variable:L"PK"
+  ## SOMETIMES_CONSUMES      ## Variable:L"KEK"
+  ## SOMETIMES_PRODUCES      ## Variable:L"KEK"
+  ## SOMETIMES_CONSUMES      ## Variable:L"SecureBoot"
+  gEfiGlobalVariableGuid
+
+  ## SOMETIMES_CONSUMES ## GUID (Extended IFR Guid Opcode)
+  ## PRODUCES            ## GUID       # HII opcode
+  gEfiIfrTianoGuid
+
+  ## PRODUCES                ## HII
+  ## CONSUMES                ## HII
+  gSecureBootConfigFormSetGuid
+
+  ## CONSUMES
+  ## CONSUMES
+  ## SOMETIMES_PRODUCES  ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertPkcs7Guid
+
+  ## CONSUMES
+  ## SOMETIMES_CONSUMES  ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertTypeRsa2048Sha256Guid
+
+  ## SOMETIMES_CONSUMES ## GUID (Indicate the information type is volume)
+  ## SOMETIMES_CONSUMES  ## GUID  # Indicate the information type
+  gEfiFileSystemVolumeLabelInfoIdGuid
+
+  ## SOMETIMES_PRODUCES  ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertX509Sha256Guid
+
+  ## SOMETIMES_PRODUCES  ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertX509Sha384Guid
+
+  ## SOMETIMES_PRODUCES  ## GUID  # Unique ID for the type of the certificate.
+  gEfiCertX509Sha512Guid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventReadyToBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventAfterReadyToBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventLegacyBootGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiAcpi20TableGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiAcpi10TableGuid
+
+  ## CONSUMES  ## SystemTable
+  gEfiHobListGuid
+
+  ## CONSUMES
+  gUefiOvmfPkgPlatformInfoGuid
+
+  gEdkiiRngAlgorithmUnSafe
+
+  ## SOMETIMES_CONSUMES ## GUID
+  gEdkiiIfrBitVarstoreGuid
+
+  ## SOMETIMES_CONSUMES ## UNDEFINED
+  gEfiFileInfoGuid
+
+  gDefaultPKFileGuid
+
+  gDefaultKEKFileGuid
+
+  gDefaultdbFileGuid
+
+  gDefaultdbxFileGuid
+
+  gDefaultdbtFileGuid
+
+
+[PcdEx.IA32]
+
+[LibraryClasses.IA32]
+## @LIB_INSTANCES
+#  MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+#  MdePkg/Library/DxePcdLib/DxePcdLib.inf
+#  MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
+#  MdePkg/Library/BaseLib/BaseLib.inf
+#  MdePkg/Library/CcProbeLibNull/CcProbeLibNull.inf
+#  MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
+#  MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev.inf
+#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
+#  OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort.inf
+#  MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
+#  MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+#  MdePkg/Library/UefiDevicePathLibDevicePathProtocol/UefiDevicePathLibDevicePathProtocol.inf
+#  MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
+#  MdePkg/Library/UefiLib/UefiLib.inf
+#  MdePkg/Library/BasePciExpressLib/BasePciExpressLib.inf
+#  MdePkg/Library/BasePciCf8Lib/BasePciCf8Lib.inf
+#  MdePkg/Library/DxeHobLib/DxeHobLib.inf
+#  OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35.inf
+#  OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib.inf
+#  MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib.inf
+#  MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
+#  SecurityPkg/Library/PlatformPKProtectionLibVarPolicy/PlatformPKProtectionLibVarPolicy.inf
+#  MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
+#  CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
+#  CryptoPkg/Library/OpensslLib/OpensslLib.inf
+#  MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf
+#  MdePkg/Library/BasePeCoffExtraActionLibNull/BasePeCoffExtraActionLibNull.inf
+#  MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
+#  SecurityPkg/Library/SecureBootVariableLib/SecureBootVariableLib.inf
+#  CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
+#  MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf
+#  OvmfPkg/Library/PlatformSecureLib/PlatformSecureLib.inf
+#  MdeModulePkg/Library/FileExplorerLib/FileExplorerLib.inf
+#  MdePkg/Library/BasePeCoffLib/BasePeCoffLib.inf
+#  SecurityPkg/Library/SecureBootVariableProvisionLib/SecureBootVariableProvisionLib.inf
+#  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
+
+[Depex.IA32]
+#  (gEfiHiiConfigRoutingProtocolGuid  AND gEfiHiiDatabaseProtocolGuid       AND gEfiVariableArchProtocolGuid      AND gEfiVariableWriteArchProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiBdsArchProtocolGuid AND gEfiCpuArchProtocolGuid AND gEfiMetronomeArchProtocolGuid AND gEfiMonotonicCounterArchProtocolGuid AND gEfiRealTimeClockArchProtocolGuid AND gEfiResetArchProtocolGuid AND gEfiRuntimeArchProtocolGuid AND gEfiSecurityArchProtocolGuid AND gEfiTimerArchProtocolGuid AND gEfiVariableWriteArchProtocolGuid AND gEfiVariableArchProtocolGuid AND gEfiWatchdogTimerArchProtocolGuid) AND (gEfiFormBrowser2ProtocolGuid AND gEfiHiiDatabaseProtocolGuid)
+
+[UserExtensions.TianoCore."ExtraFiles"]
+SecureBootConfigDxeExtra.uni
+
+
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 EBC
+#
+
+[BuildOptions.IA32]
+## @AsBuilt
+##   GCC:RELEASE_GCC5_IA32_ASMLINK_FLAGS = /nologo /tiny
+##   GCC:RELEASE_GCC5_IA32_DLINK2_FLAGS = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wno-error -no-pie
+##   GCC:RELEASE_GCC5_IA32_DTC_FLAGS = -H epapr
+##   GCC:RELEASE_GCC5_IA32_DLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive -flto -Os -Wl,-m,elf_i386,--oformat=elf32-i386
+##   GCC:RELEASE_GCC5_IA32_VFRPP_FLAGS = -x c -E -P -DVFRCOMPILE --include $(MODULE_NAME)StrDefs.h
+##   GCC:RELEASE_GCC5_IA32_OPTROM_FLAGS = -e
+##   GCC:RELEASE_GCC5_IA32_NASM_FLAGS = -f elf32
+##   GCC:RELEASE_GCC5_IA32_APP_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASL_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_PP_FLAGS = -E -x assembler-with-cpp -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_OBJCOPY_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASLCC_FLAGS = -x c -fno-lto -m32
+##   GCC:RELEASE_GCC5_IA32_SYMRENAME_FLAGS = Symbol renaming not needed for
+##   GCC:RELEASE_GCC5_IA32_NASMB_FLAGS = -f bin
+##   GCC:RELEASE_GCC5_IA32_ASLPP_FLAGS = -x c -E -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_ASLDLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--defsym=PECOFF_HEADER_SIZE=0 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable -Wl,-m,elf_i386 -no-pie
+##   GCC:RELEASE_GCC5_IA32_GENFW_FLAGS = --zero
+##   GCC:RELEASE_GCC5_IA32_DEPS_FLAGS = -MMD -MF $@.deps
+##   GCC:RELEASE_GCC5_IA32_VFR_FLAGS = -l -n
+##   GCC:RELEASE_GCC5_IA32_RC_FLAGS = -I binary -O elf32-i386          -B i386        --rename-section .data=.hii
+##   GCC:RELEASE_GCC5_IA32_ASM_FLAGS = -c -x assembler -imacros AutoGen.h -m32 -march=i386
+##   GCC:RELEASE_GCC5_IA32_CC_FLAGS = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -mstack-protector-guard=global -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie -flto -Wno-unused-but-set-variable -Wno-unused-const-variable -DMDEPKG_NDEBUG -mno-mmx -mno-sse -D DISABLE_NEW_DEPRECATED_INTERFACES -D ENABLE_MD5_DEPRECATED_INTERFACES

@@ -1,0 +1,224 @@
+## @file
+# Ps2 Keyboard Driver.
+#
+# Ps2 Keyboard Driver for UEFI. The keyboard type implemented follows IBM
+# compatible PS2 protocol using Scan Code Set 1.
+#
+# Copyright (c) 2006 - 2018, Intel Corporation. All rights reserved.<BR>
+#
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+#
+##
+
+# DO NOT EDIT
+# FILE auto-generated
+
+[Defines]
+  INF_VERSION                = 0x00010017
+  BASE_NAME                  = Ps2KeyboardDxe
+  FILE_GUID                  = C4D1F932-821F-4744-BF06-6D30F7730F8D
+  MODULE_TYPE                = UEFI_DRIVER
+  VERSION_STRING             = 1.0
+  ENTRY_POINT                = InitializePs2Keyboard
+  MODULE_UNI_FILE            = Ps2KeyboardDxe.uni
+
+[Packages.IA32]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  OvmfPkg/OvmfPkg.dec
+
+[Binaries.IA32]
+  PE32|Ps2KeyboardDxe.efi
+
+[PatchPcd.IA32]
+
+[Protocols.IA32]
+  ## BY_START
+  gEfiSimpleTextInProtocolGuid
+
+  ## BY_START
+  gEfiSimpleTextInputExProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiPs2PolicyProtocolGuid
+
+  ## TO_START
+  gEfiSioProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## TO_START
+  gEfiDevicePathProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gPcdProtocolGuid
+
+  ## CONSUMES
+  gEfiPcdProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gGetPcdInfoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGetPcdInfoProtocolGuid
+
+  ## CONSUMES
+  gEfiDevicePathUtilitiesProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathToTextProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathFromTextProtocolGuid
+
+  ## SOMETIMES_PRODUCES
+  gEfiDriverBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleTextOutProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGraphicsOutputProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiHiiFontProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleFileSystemProtocolGuid
+
+  ## SOMETIMES_CONSUMES # Consumes if gEfiGraphicsOutputProtocolGuid uninstalled
+  gEfiUgaDrawProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiComponentNameProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiComponentName2ProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverConfigurationProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverConfiguration2ProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverDiagnosticsProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverDiagnostics2ProtocolGuid
+
+  ## CONSUMES
+  gEfiStatusCodeRuntimeProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiLoadedImageProtocolGuid
+
+
+[Ppis.IA32]
+
+[Guids.IA32]
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventReadyToBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventAfterReadyToBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventLegacyBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Variable
+  gEfiGlobalVariableGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiAcpi20TableGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiAcpi10TableGuid
+
+  ## CONSUMES  ## SystemTable
+  gEfiHobListGuid
+
+  ## SOMETIMES_CONSUMES ## UNDEFINED
+  gEfiStatusCodeSpecificDataGuid
+
+  ## SOMETIMES_CONSUMES ## UNDEFINED
+  gEfiStatusCodeDataTypeDebugGuid
+
+  ## CONSUMES
+  gUefiOvmfPkgPlatformInfoGuid
+
+
+[PcdEx.IA32]
+
+[LibraryClasses.IA32]
+## @LIB_INSTANCES
+#  MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+#  MdePkg/Library/DxePcdLib/DxePcdLib.inf
+#  MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
+#  MdePkg/Library/BaseLib/BaseLib.inf
+#  MdePkg/Library/CcProbeLibNull/CcProbeLibNull.inf
+#  MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
+#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
+#  MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev.inf
+#  OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort.inf
+#  MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
+#  MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+#  MdePkg/Library/UefiDevicePathLibDevicePathProtocol/UefiDevicePathLibDevicePathProtocol.inf
+#  MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
+#  MdePkg/Library/UefiLib/UefiLib.inf
+#  MdePkg/Library/BasePciExpressLib/BasePciExpressLib.inf
+#  MdePkg/Library/BasePciCf8Lib/BasePciCf8Lib.inf
+#  MdePkg/Library/DxeHobLib/DxeHobLib.inf
+#  OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35.inf
+#  MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
+#  MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf
+#  OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib.inf
+#  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
+
+[Depex.IA32]
+#  (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiBdsArchProtocolGuid AND gEfiCpuArchProtocolGuid AND gEfiMetronomeArchProtocolGuid AND gEfiMonotonicCounterArchProtocolGuid AND gEfiRealTimeClockArchProtocolGuid AND gEfiResetArchProtocolGuid AND gEfiRuntimeArchProtocolGuid AND gEfiSecurityArchProtocolGuid AND gEfiTimerArchProtocolGuid AND gEfiVariableWriteArchProtocolGuid AND gEfiVariableArchProtocolGuid AND gEfiWatchdogTimerArchProtocolGuid)
+
+[UserExtensions.TianoCore."ExtraFiles"]
+Ps2KeyboardDxeExtra.uni
+
+
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 EBC
+#  DRIVER_BINDING                = gKeyboardControllerDriver;
+#  COMPONENT_NAME                = gPs2KeyboardComponentName;
+#  COMPONENT_NAME2               = gPs2KeyboardComponentName2;
+#
+#
+# [Event]
+#
+#   ##
+#   # Timer event used to read key strokes at a regular interval.
+#   #
+#   EVENT_TYPE_PERIODIC_TIMER   ## CONSUMES
+#
+
+[BuildOptions.IA32]
+## @AsBuilt
+##   GCC:RELEASE_GCC5_IA32_ASMLINK_FLAGS = /nologo /tiny
+##   GCC:RELEASE_GCC5_IA32_DLINK2_FLAGS = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wno-error -no-pie
+##   GCC:RELEASE_GCC5_IA32_DTC_FLAGS = -H epapr
+##   GCC:RELEASE_GCC5_IA32_DLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive -flto -Os -Wl,-m,elf_i386,--oformat=elf32-i386
+##   GCC:RELEASE_GCC5_IA32_VFRPP_FLAGS = -x c -E -P -DVFRCOMPILE --include $(MODULE_NAME)StrDefs.h
+##   GCC:RELEASE_GCC5_IA32_OPTROM_FLAGS = -e
+##   GCC:RELEASE_GCC5_IA32_NASM_FLAGS = -f elf32
+##   GCC:RELEASE_GCC5_IA32_APP_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASL_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_PP_FLAGS = -E -x assembler-with-cpp -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_OBJCOPY_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASLCC_FLAGS = -x c -fno-lto -m32
+##   GCC:RELEASE_GCC5_IA32_SYMRENAME_FLAGS = Symbol renaming not needed for
+##   GCC:RELEASE_GCC5_IA32_NASMB_FLAGS = -f bin
+##   GCC:RELEASE_GCC5_IA32_ASLPP_FLAGS = -x c -E -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_ASLDLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--defsym=PECOFF_HEADER_SIZE=0 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable -Wl,-m,elf_i386 -no-pie
+##   GCC:RELEASE_GCC5_IA32_GENFW_FLAGS = --zero
+##   GCC:RELEASE_GCC5_IA32_DEPS_FLAGS = -MMD -MF $@.deps
+##   GCC:RELEASE_GCC5_IA32_VFR_FLAGS = -l -n
+##   GCC:RELEASE_GCC5_IA32_RC_FLAGS = -I binary -O elf32-i386          -B i386        --rename-section .data=.hii
+##   GCC:RELEASE_GCC5_IA32_ASM_FLAGS = -c -x assembler -imacros AutoGen.h -m32 -march=i386
+##   GCC:RELEASE_GCC5_IA32_CC_FLAGS = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -mstack-protector-guard=global -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie -flto -Wno-unused-but-set-variable -Wno-unused-const-variable -DMDEPKG_NDEBUG -mno-mmx -mno-sse -D DISABLE_NEW_DEPRECATED_INTERFACES -D ENABLE_MD5_DEPRECATED_INTERFACES

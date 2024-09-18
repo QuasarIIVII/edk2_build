@@ -1,0 +1,42 @@
+;------------------------------------------------------------------------------
+;
+; Copyright (c) 2006 - 2013, Intel Corporation. All rights reserved.<BR>
+;
+; SPDX-License-Identifier: BSD-2-Clause-Patent
+;
+;------------------------------------------------------------------------------
+
+  SECTION .text
+
+;------------------------------------------------------------------------------
+; void
+; __attribute__((cdecl))
+; JumpToKernel (
+; void *KernelStart,
+; void *KernelBootParams
+; );
+;------------------------------------------------------------------------------
+global JumpToKernel
+JumpToKernel:
+
+    mov esi, [esp + 8]
+    call DWORD [esp + 4]
+    ret
+
+;------------------------------------------------------------------------------
+; void
+; __attribute__((cdecl))
+; JumpToUefiKernel (
+; EFI_HANDLE ImageHandle,
+; EFI_SYSTEM_TABLE *SystemTable,
+; void *KernelBootParams,
+; void *KernelStart
+; );
+;------------------------------------------------------------------------------
+global JumpToUefiKernel
+JumpToUefiKernel:
+
+    mov eax, [esp + 12]
+    mov eax, [eax + 0x264]
+    add eax, [esp + 16]
+    jmp eax

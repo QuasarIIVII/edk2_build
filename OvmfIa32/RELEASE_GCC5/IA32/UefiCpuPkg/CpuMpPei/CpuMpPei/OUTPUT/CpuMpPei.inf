@@ -1,0 +1,186 @@
+## @file
+#  CPU driver installs CPU PI Multi-processor PPI.
+#
+#  Copyright (c) 2015 - 2023, Intel Corporation. All rights reserved.<BR>
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+# DO NOT EDIT
+# FILE auto-generated
+
+[Defines]
+  INF_VERSION                = 0x00010017
+  BASE_NAME                  = CpuMpPei
+  FILE_GUID                  = EDADEB9D-DDBA-48BD-9D22-C1C169C8C5C6
+  MODULE_TYPE                = PEIM
+  VERSION_STRING             = 1.0
+  ENTRY_POINT                = CpuMpPeimInit
+  MODULE_UNI_FILE            = CpuMpPei.uni
+
+[Packages.IA32]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+
+[Binaries.IA32]
+  PE32|CpuMpPei.efi
+  PEI_DEPEX|CpuMpPei.depex
+
+[PatchPcd.IA32]
+
+[Protocols.IA32]
+
+[Ppis.IA32]
+  ## PRODUCES
+  gEfiPeiMpServicesPpiGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSecPlatformInformationPpiGuid
+
+  ## SOMETIMES_CONSUMES
+  ## PRODUCES
+  ## UNDEFINED # HOB
+  gEfiSecPlatformInformation2PpiGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiVectorHandoffInfoPpiGuid
+
+  ## CONSUMES
+  gEfiPeiMemoryDiscoveredPpiGuid
+
+  ## PRODUCES
+  gEdkiiPeiMpServices2PpiGuid
+
+  ## SOMETIMES_CONSUMES
+  gPcdPpiGuid
+
+  ## CONSUMES
+  gEfiPeiPcdPpiGuid
+
+  ## SOMETIMES_CONSUMES
+  gGetPcdInfoPpiGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGetPcdInfoPpiGuid
+
+  ## SOMETIMES_PRODUCES
+  gEfiPeiFirmwareVolumeInfoPpiGuid
+
+  ## SOMETIMES_PRODUCES
+  gEfiPeiFirmwareVolumeInfo2PpiGuid
+
+  ## SOMETIMES_CONSUMES
+  gEdkiiPeiShadowMicrocodePpiGuid
+
+
+[Guids.IA32]
+  ## SOMETIMES_CONSUMES     ## HOB
+  gEdkiiMigratedFvInfoGuid
+
+  ## PRODUCES
+  gMpInformation2HobGuid
+
+  ## SOMETIMES_PRODUCES ## GUID # FV File System Guid.
+  gEfiFirmwareFileSystem2Guid
+
+  ## SOMETIMES_PRODUCES ## HOB # MemoryAllocation StackHob
+  gEfiHobMemoryAllocStackGuid
+
+  ## SOMETIMES_PRODUCES ## HOB # MemoryAllocation BspStoreHob
+  gEfiHobMemoryAllocBspStoreGuid
+
+  ## SOMETIMES_PRODUCES ## HOB # MemoryAllocation ModuleHob
+  gEfiHobMemoryAllocModuleGuid
+
+  ## SOMETIMES_CONSUMES   ## UNDEFINED
+  gEfiStatusCodeSpecificDataGuid
+
+  ## SOMETIMES_CONSUMES   ## UNDEFINED
+  gEfiStatusCodeDataTypeDebugGuid
+
+  gEdkiiS3SmmInitDoneGuid
+
+  gEdkiiMicrocodePatchHobGuid
+
+  ## SOMETIMES_CONSUMES
+  gGhcbApicIdsGuid
+
+  gEdkiiEndOfS3ResumeGuid
+
+
+[PcdEx.IA32]
+
+[LibraryClasses.IA32]
+## @LIB_INSTANCES
+#  MdePkg/Library/PeiServicesTablePointerLibIdt/PeiServicesTablePointerLibIdt.inf
+#  MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+#  MdePkg/Library/PeiPcdLib/PeiPcdLib.inf
+#  MdePkg/Library/PeiMemoryAllocationLib/PeiMemoryAllocationLib.inf
+#  MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
+#  MdePkg/Library/PeiServicesLib/PeiServicesLib.inf
+#  MdePkg/Library/PeiHobLib/PeiHobLib.inf
+#  MdePkg/Library/BaseLib/BaseLib.inf
+#  MdePkg/Library/CcProbeLibNull/CcProbeLibNull.inf
+#  MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
+#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
+#  MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev.inf
+#  OvmfPkg/Library/PlatformDebugLibIoPort/PlatformRomDebugLibIoPort.inf
+#  MdePkg/Library/BasePciCf8Lib/BasePciCf8Lib.inf
+#  MdePkg/Library/BasePciLibCf8/BasePciLibCf8.inf
+#  OvmfPkg/Library/AcpiTimerLib/BaseAcpiTimerLib.inf
+#  MdePkg/Library/BaseCpuLib/BaseCpuLib.inf
+#  MdeModulePkg/Library/OemHookStatusCodeLibNull/OemHookStatusCodeLibNull.inf
+#  PcAtChipsetPkg/Library/SerialIoLib/SerialIoLib.inf
+#  MdePkg/Library/BasePeCoffGetEntryPointLib/BasePeCoffGetEntryPointLib.inf
+#  UefiCpuPkg/Library/CcExitLibNull/CcExitLibNull.inf
+#  MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
+#  UefiCpuPkg/Library/BaseXApicX2ApicLib/BaseXApicX2ApicLib.inf
+#  UefiCpuPkg/Library/MtrrLib/MtrrLib.inf
+#  UefiCpuPkg/Library/MicrocodeLib/MicrocodeLib.inf
+#  UefiCpuPkg/Library/AmdSvsmLibNull/AmdSvsmLibNull.inf
+#  UefiCpuPkg/Library/CpuPageTableLib/CpuPageTableLib.inf
+#  MdePkg/Library/PeimEntryPoint/PeimEntryPoint.inf
+#  MdeModulePkg/Library/PeiReportStatusCodeLib/PeiReportStatusCodeLib.inf
+#  UefiCpuPkg/Library/CpuExceptionHandlerLib/PeiCpuExceptionHandlerLib.inf
+#  UefiCpuPkg/Library/MpInitLib/PeiMpInitLib.inf
+#  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
+
+[Depex.IA32]
+#  (TRUE) AND (gEfiPeiPcdPpiGuid)
+
+[UserExtensions.TianoCore."ExtraFiles"]
+CpuMpPeiExtra.uni
+
+
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[BuildOptions.IA32]
+## @AsBuilt
+##   GCC:RELEASE_GCC5_IA32_ASMLINK_FLAGS = /nologo /tiny
+##   GCC:RELEASE_GCC5_IA32_DLINK2_FLAGS = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wno-error -no-pie
+##   GCC:RELEASE_GCC5_IA32_DTC_FLAGS = -H epapr
+##   GCC:RELEASE_GCC5_IA32_DLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive -flto -Os -Wl,-m,elf_i386,--oformat=elf32-i386
+##   GCC:RELEASE_GCC5_IA32_VFRPP_FLAGS = -x c -E -P -DVFRCOMPILE --include $(MODULE_NAME)StrDefs.h
+##   GCC:RELEASE_GCC5_IA32_OPTROM_FLAGS = -e
+##   GCC:RELEASE_GCC5_IA32_NASM_FLAGS = -f elf32
+##   GCC:RELEASE_GCC5_IA32_APP_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASL_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_PP_FLAGS = -E -x assembler-with-cpp -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_OBJCOPY_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASLCC_FLAGS = -x c -fno-lto -m32
+##   GCC:RELEASE_GCC5_IA32_SYMRENAME_FLAGS = Symbol renaming not needed for
+##   GCC:RELEASE_GCC5_IA32_NASMB_FLAGS = -f bin
+##   GCC:RELEASE_GCC5_IA32_ASLPP_FLAGS = -x c -E -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_ASLDLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--defsym=PECOFF_HEADER_SIZE=0 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable -Wl,-m,elf_i386 -no-pie
+##   GCC:RELEASE_GCC5_IA32_GENFW_FLAGS = --zero
+##   GCC:RELEASE_GCC5_IA32_DEPS_FLAGS = -MMD -MF $@.deps
+##   GCC:RELEASE_GCC5_IA32_VFR_FLAGS = -l -n
+##   GCC:RELEASE_GCC5_IA32_RC_FLAGS = -I binary -O elf32-i386          -B i386        --rename-section .data=.hii
+##   GCC:RELEASE_GCC5_IA32_ASM_FLAGS = -c -x assembler -imacros AutoGen.h -m32 -march=i386
+##   GCC:RELEASE_GCC5_IA32_CC_FLAGS = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -mstack-protector-guard=global -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie -flto -Wno-unused-but-set-variable -Wno-unused-const-variable -DMDEPKG_NDEBUG -mno-mmx -mno-sse -D DISABLE_NEW_DEPRECATED_INTERFACES -D ENABLE_MD5_DEPRECATED_INTERFACES

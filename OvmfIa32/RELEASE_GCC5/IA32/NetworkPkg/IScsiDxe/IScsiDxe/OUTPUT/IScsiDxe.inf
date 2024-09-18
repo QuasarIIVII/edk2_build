@@ -1,0 +1,372 @@
+## @file
+#  Client-side iSCSI service.
+#
+#  The iSCSI driver provides iSCSI service in the preboot environment and supports
+#  booting over iSCSI. This driver supports both IPv4 and IPv6 network stack.
+#
+# Copyright (c) 2004 - 2018, Intel Corporation. All rights reserved.<BR>
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+# DO NOT EDIT
+# FILE auto-generated
+
+[Defines]
+  INF_VERSION                = 0x00010017
+  BASE_NAME                  = IScsiDxe
+  FILE_GUID                  = 86CDDF93-4872-4597-8AF9-A35AE4D3725F
+  MODULE_TYPE                = DXE_DRIVER
+  VERSION_STRING             = 1.0
+  ENTRY_POINT                = IScsiDriverEntryPoint
+  UNLOAD_IMAGE               = IScsiUnload
+  MODULE_UNI_FILE            = IScsiDxe.uni
+
+[Packages.IA32]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  NetworkPkg/NetworkPkg.dec
+  OvmfPkg/OvmfPkg.dec
+
+[Binaries.IA32]
+  PE32|IScsiDxe.efi
+  DXE_DEPEX|IScsiDxe.depex
+
+[PatchPcd.IA32]
+
+[Protocols.IA32]
+  ## SOMETIMES_CONSUMES ## SystemTable
+  gEfiAcpiTableProtocolGuid
+
+  ## SOMETIMES_PRODUCES
+  ## SOMETIMES_PRODUCES
+  gEfiDriverBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiPciIoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDhcp4ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDhcp6ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDhcp4ServiceBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDhcp6ServiceBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDns4ServiceBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDns4ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDns6ServiceBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDns6ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiIp4Config2ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiIp6ConfigProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## TO_START
+  gEfiTcp4ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## TO_START
+  gEfiTcp6ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## TO_START
+  gEfiTcp4ServiceBindingProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## TO_START
+  gEfiTcp6ServiceBindingProtocolGuid
+
+  ## BY_START
+  gEfiExtScsiPassThruProtocolGuid
+
+  ## PRODUCES
+  gEfiHiiConfigAccessProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  ## TO_START
+  ## PRODUCES
+  gEfiDevicePathProtocolGuid
+
+  ## PRODUCES
+  ## UNDEFINED # Variable
+  gEfiIScsiInitiatorNameProtocolGuid
+
+  ## PRODUCES
+  gEfiAuthenticationInfoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiAdapterInformationProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiNetworkInterfaceIdentifierProtocolGuid_31
+
+  ## SOMETIMES_CONSUMES
+  gPcdProtocolGuid
+
+  ## CONSUMES
+  gEfiPcdProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gGetPcdInfoProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGetPcdInfoProtocolGuid
+
+  ## CONSUMES
+  gEfiDevicePathUtilitiesProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathToTextProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiDevicePathFromTextProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleTextOutProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiGraphicsOutputProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  ## SOMETIMES_CONSUMES
+  gEfiHiiFontProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleFileSystemProtocolGuid
+
+  ## SOMETIMES_CONSUMES # Consumes if gEfiGraphicsOutputProtocolGuid uninstalled
+  gEfiUgaDrawProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  ## SOMETIMES_CONSUMES
+  gEfiComponentNameProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  ## SOMETIMES_CONSUMES
+  gEfiComponentName2ProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverConfigurationProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverConfiguration2ProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverDiagnosticsProtocolGuid
+
+  ## SOMETIMES_PRODUCES # User chooses to produce it
+  gEfiDriverDiagnostics2ProtocolGuid
+
+  ## CONSUMES
+  gEfiHiiStringProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiHiiImageProtocolGuid
+
+  ## CONSUMES
+  gEfiHiiDatabaseProtocolGuid
+
+  ## CONSUMES
+  gEfiHiiConfigRoutingProtocolGuid
+
+  gEfiMpServiceProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiFormBrowser2ProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiSimpleNetworkProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiManagedNetworkProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiManagedNetworkServiceBindingProtocolGuid
+
+  ## CONSUMES
+  gEfiRngProtocolGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiLoadedImageProtocolGuid
+
+
+[Ppis.IA32]
+
+[Guids.IA32]
+  ## SOMETIMES_CONSUMES ## Event
+  gEfiEventExitBootServicesGuid
+
+  ## SOMETIMES_PRODUCES ## UNDEFINED
+  gEfiIfrTianoGuid
+
+  ## SOMETIMES_CONSUMES ## SystemTable
+  gEfiAcpiTableGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  ## SOMETIMES_CONSUMES ## SystemTable
+  gEfiAcpi10TableGuid
+
+  ## SOMETIMES_CONSUMES ## UNDEFINED
+  gEfiAdapterInfoNetworkBootGuid
+
+  ## SOMETIMES_CONSUMES ## GUID
+  gEfiAdapterInfoUndiIpv6SupportGuid
+
+  ## SOMETIMES_PRODUCES ## Variable:L"AttemptOrder"
+  ## SOMETIMES_CONSUMES ## Variable:L"AttemptOrder"
+  ## SOMETIMES_PRODUCES ## Variable:L"InitialAttemptOrder"
+  ## SOMETIMES_CONSUMES ## Variable:L"InitialAttemptOrder"
+  ## SOMETIMES_CONSUMES ## UNDEFINED # HiiIsConfigHdrMatch   mVendorStorageName
+  ## SOMETIMES_PRODUCES ## UNDEFINED # HiiConstructConfigHdr mVendorStorageName
+  ## SOMETIMES_PRODUCES ## UNDEFINED # HiiGetBrowserData     mVendorStorageName
+  ## SOMETIMES_CONSUMES ## UNDEFINED # HiiSetBrowserData     mVendorStorageName
+  ## SOMETIMES_CONSUMES ## HII
+  gIScsiConfigGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventReadyToBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventAfterReadyToBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Event
+  gEfiEventLegacyBootGuid
+
+  ## SOMETIMES_CONSUMES  ## Variable
+  gEfiGlobalVariableGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiAcpi20TableGuid
+
+  ## CONSUMES  ## SystemTable
+  gEfiHobListGuid
+
+  ## CONSUMES
+  gUefiOvmfPkgPlatformInfoGuid
+
+  gEdkiiRngAlgorithmUnSafe
+
+  ## SOMETIMES_CONSUMES ## GUID
+  gEdkiiIfrBitVarstoreGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiSmbiosTableGuid
+
+  ## SOMETIMES_CONSUMES  ## SystemTable
+  gEfiSmbios3TableGuid
+
+  ## SOMETIMES_CONSUMES
+  gEfiAdapterInfoMediaStateGuid
+
+  ## CONSUMES
+  gEfiRngAlgorithmRaw
+
+  ## CONSUMES
+  gEfiRngAlgorithmSp80090Ctr256Guid
+
+  ## CONSUMES
+  gEfiRngAlgorithmSp80090Hmac256Guid
+
+  ## CONSUMES
+  gEfiRngAlgorithmSp80090Hash256Guid
+
+  ## CONSUMES
+  gEfiRngAlgorithmArmRndr
+
+
+[PcdEx.IA32]
+
+[LibraryClasses.IA32]
+## @LIB_INSTANCES
+#  MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+#  MdePkg/Library/DxePcdLib/DxePcdLib.inf
+#  MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
+#  MdePkg/Library/BaseLib/BaseLib.inf
+#  MdePkg/Library/CcProbeLibNull/CcProbeLibNull.inf
+#  MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
+#  MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsicSev.inf
+#  MdePkg/Library/BasePrintLib/BasePrintLib.inf
+#  OvmfPkg/Library/PlatformDebugLibIoPort/PlatformDebugLibIoPort.inf
+#  MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
+#  MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+#  MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
+#  MdePkg/Library/UefiDevicePathLibDevicePathProtocol/UefiDevicePathLibDevicePathProtocol.inf
+#  MdePkg/Library/UefiLib/UefiLib.inf
+#  MdePkg/Library/BasePciExpressLib/BasePciExpressLib.inf
+#  MdePkg/Library/BasePciCf8Lib/BasePciCf8Lib.inf
+#  MdePkg/Library/DxeHobLib/DxeHobLib.inf
+#  OvmfPkg/Library/DxePciLibI440FxQ35/DxePciLibI440FxQ35.inf
+#  OvmfPkg/Library/AcpiTimerLib/DxeAcpiTimerLib.inf
+#  MdeModulePkg/Library/BaseRngLibTimerLib/BaseRngLibTimerLib.inf
+#  MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
+#  CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
+#  CryptoPkg/Library/OpensslLib/OpensslLib.inf
+#  MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
+#  CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
+#  MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf
+#  NetworkPkg/Library/DxeNetLib/DxeNetLib.inf
+#  MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
+#  NetworkPkg/Library/DxeTcpIoLib/DxeTcpIoLib.inf
+#  MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf
+#  MdePkg/Library/StackCheckLibNull/StackCheckLibNull.inf
+
+[Depex.IA32]
+#  (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiPcdProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiDevicePathUtilitiesProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiHiiStringProtocolGuid        AND gEfiHiiDatabaseProtocolGuid      AND gEfiHiiConfigRoutingProtocolGuid) AND (gEfiRngProtocolGuid) AND (gEfiBdsArchProtocolGuid AND gEfiCpuArchProtocolGuid AND gEfiMetronomeArchProtocolGuid AND gEfiMonotonicCounterArchProtocolGuid AND gEfiRealTimeClockArchProtocolGuid AND gEfiResetArchProtocolGuid AND gEfiRuntimeArchProtocolGuid AND gEfiSecurityArchProtocolGuid AND gEfiTimerArchProtocolGuid AND gEfiVariableWriteArchProtocolGuid AND gEfiVariableArchProtocolGuid AND gEfiWatchdogTimerArchProtocolGuid)
+
+[UserExtensions.TianoCore."ExtraFiles"]
+IScsiDxeExtra.uni
+
+
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#  DRIVER_BINDING                =  gIScsiDriverBinding
+#  COMPONENT_NAME                =  gIScsiComponentName
+#  COMPONENT_NAME2               =  gIScsiComponentName2
+#
+
+[BuildOptions.IA32]
+## @AsBuilt
+##   GCC:RELEASE_GCC5_IA32_ASMLINK_FLAGS = /nologo /tiny
+##   GCC:RELEASE_GCC5_IA32_DLINK2_FLAGS = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wno-error -no-pie
+##   GCC:RELEASE_GCC5_IA32_DTC_FLAGS = -H epapr
+##   GCC:RELEASE_GCC5_IA32_DLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive -flto -Os -Wl,-m,elf_i386,--oformat=elf32-i386
+##   GCC:RELEASE_GCC5_IA32_VFRPP_FLAGS = -x c -E -P -DVFRCOMPILE --include $(MODULE_NAME)StrDefs.h
+##   GCC:RELEASE_GCC5_IA32_OPTROM_FLAGS = -e
+##   GCC:RELEASE_GCC5_IA32_NASM_FLAGS = -f elf32
+##   GCC:RELEASE_GCC5_IA32_APP_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASL_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_PP_FLAGS = -E -x assembler-with-cpp -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_OBJCOPY_FLAGS = 
+##   GCC:RELEASE_GCC5_IA32_ASLCC_FLAGS = -x c -fno-lto -m32
+##   GCC:RELEASE_GCC5_IA32_SYMRENAME_FLAGS = Symbol renaming not needed for
+##   GCC:RELEASE_GCC5_IA32_NASMB_FLAGS = -f bin
+##   GCC:RELEASE_GCC5_IA32_ASLPP_FLAGS = -x c -E -include AutoGen.h
+##   GCC:RELEASE_GCC5_IA32_ASLDLINK_FLAGS = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--defsym=PECOFF_HEADER_SIZE=0 -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable -Wl,-m,elf_i386 -no-pie
+##   GCC:RELEASE_GCC5_IA32_GENFW_FLAGS = --zero
+##   GCC:RELEASE_GCC5_IA32_DEPS_FLAGS = -MMD -MF $@.deps
+##   GCC:RELEASE_GCC5_IA32_VFR_FLAGS = -l -n
+##   GCC:RELEASE_GCC5_IA32_RC_FLAGS = -I binary -O elf32-i386          -B i386        --rename-section .data=.hii
+##   GCC:RELEASE_GCC5_IA32_ASM_FLAGS = -c -x assembler -imacros AutoGen.h -m32 -march=i386
+##   GCC:RELEASE_GCC5_IA32_CC_FLAGS = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -mstack-protector-guard=global -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie -flto -Wno-unused-but-set-variable -Wno-unused-const-variable -DMDEPKG_NDEBUG -mno-mmx -mno-sse -D DISABLE_NEW_DEPRECATED_INTERFACES -D ENABLE_MD5_DEPRECATED_INTERFACES
